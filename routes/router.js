@@ -38,7 +38,7 @@ router
     });
     // const { name } = await userResponse.json();
     console.log(userResponse);
-    context.response.redirect("get-started");
+    context.response.redirect("https://deno-crypto-payments.herokuapp.com/get-started");
   })
   .post("/register", async (context) => {
     const form = JSON.stringify(await multiParser(context.request.serverRequest));
