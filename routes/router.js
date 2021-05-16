@@ -38,7 +38,7 @@ router
     });
     const { name } = await userResponse.json();
   
-    context.response.body = userResponse;
+    context.response.body = userResponse.json();
     // context.response.redirect("get-started");
   })
   .post("/register", async (context) => {
