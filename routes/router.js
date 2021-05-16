@@ -1,8 +1,8 @@
 import { Router } from "../dependencies.js";
 import { OAuth2Client } from "../dependencies.js";
 
-const CLIENT_ID     = Deno.env.get(CLIENT_ID);
-const CLIENT_SECRET = Deno.env.get(CLIENT_SECRET);
+const CLIENT_ID     = Deno.env.toObject().CLIENT_ID;
+const CLIENT_SECRET = Deno.env.toObject().CLIENT_SECRET;
 
 const oauth2Client = new OAuth2Client({
   clientId: CLIENT_ID,
