@@ -1,12 +1,17 @@
 import { Router } from "../dependencies.js";
 import { OAuth2Client } from "../dependencies.js";
 
+import { config } from "https://deno.land/x/dotenv/mod.ts";
+
+const { CLIENT_ID, CLIENT_SECRET } = config();
+
+
 const oauth2Client = new OAuth2Client({
-  clientId: "<your client id>",
-  clientSecret: "<your client secret>",
+  clientId: CLIENT_ID,
+  clientSecret: CLIENT_SECRET,
   authorizationEndpointUri: "https://github.com/login/oauth/authorize",
   tokenUri: "https://github.com/login/oauth/access_token",
-  redirectUri: "http://localhost:8000/oauth2/callback",
+  redirectUri: "https://deno-crypto-payments.herokuapp.com/oauth2/callback",
   defaults: {
     scope: "read:user",
   },
