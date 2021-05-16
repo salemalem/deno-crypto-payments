@@ -1,5 +1,5 @@
 import { Router } from "../dependencies.js";
-import { OAuth2Client } from "https://deno.land/x/oauth2_client@v0.2.0/mod.ts";
+import { OAuth2Client } from "../dependencies.js";
 
 const oauth2Client = new OAuth2Client({
   clientId: "<your client id>",

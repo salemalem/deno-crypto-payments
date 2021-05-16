@@ -3,7 +3,6 @@ import {
   Application, 
   send 
 }                              from "./dependencies.js";
-import { multiParser }         from "./dependencies.js";
 import {
   viewEngine,
   engineFactory,
@@ -13,7 +12,7 @@ import {
 // internals
 import { router }              from "./routes/router.js";
 
-import * as flags from "https://deno.land/std/flags/mod.ts";
+import { flags }               from "./dependencies.js";
 
 
 const ejsEngine = await engineFactory.getEjsEngine();
