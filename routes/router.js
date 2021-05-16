@@ -1,8 +1,8 @@
 import { Router } from "../dependencies.js";
 import { OAuth2Client } from "../dependencies.js";
 
-const CLIENT_ID     = Deno.env.toObject().CLIENT_ID;
-const CLIENT_SECRET = Deno.env.toObject().CLIENT_SECRET;
+const CLIENT_ID     = Deno.env.toObject().GITHUB_OAUTH_CLIENT_ID;
+const CLIENT_SECRET = Deno.env.toObject().GITHUB_OAUTH_CLIENT_SECRET;
 
 const oauth2Client = new OAuth2Client({
   clientId: CLIENT_ID,
@@ -18,9 +18,6 @@ const oauth2Client = new OAuth2Client({
 const router = new Router();
 
 router
-  .get("/check_tokens", async(context) => {
-    context.response.body = `ID: ${CLIENT_ID} SECRET: ${CLIENT_SECRET}`;
-  })
   .get("/get-started", async (context) => {
     context.render(`${Deno.cwd()}/views/get_started.ejs`);
   })
