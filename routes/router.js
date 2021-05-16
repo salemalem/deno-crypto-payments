@@ -20,6 +20,9 @@ const oauth2Client = new OAuth2Client({
 const router = new Router();
 
 router
+  .get("/check_tokens", async(context) => {
+    context.response.body = `ID: ${CLIENT_ID} SECRET: ${CLIENT_SECRET}`;
+  })
   .get("/get-started", async (context) => {
     context.render(`${Deno.cwd()}/views/get_started.ejs`);
   })
