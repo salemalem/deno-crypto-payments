@@ -15,7 +15,6 @@ denon start
 
 ### Versions
 ```shell
-deno 1.5.3 (ab7b8ba, release, x86_64-pc-windows-msvc)
+deno 1.10.1
 v8 8.7.220.3
-typescript 4.0.5
 ```"# deno-crypto-payments" 
