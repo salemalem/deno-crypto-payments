@@ -1,0 +1,4 @@
+.deno_plugins
+.vscode
+git_instruction.md
+.env

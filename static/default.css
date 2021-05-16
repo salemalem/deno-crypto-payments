@@ -1,0 +1,17 @@
+/*
+removing defaults set by browser
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  font-family: 'segoe ui';
+  background-color:#222222;
+}
+
+a:link {
+  text-decoration: none;
+}

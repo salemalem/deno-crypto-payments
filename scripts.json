@@ -1,0 +1,28 @@
+{
+  "$schema": "https://deno.land/x/denon@2.4.7/schema.json",
+  "scripts": {
+    "start": {
+      "cmd": "deno run server.js",
+      "desc": "run my server.js file",
+
+      "allow": [
+        "read",
+        "write",
+        "net",
+        "plugin",
+        "env"
+      ],
+      "unstable": true
+    },
+
+    "watcher": {
+      "interval": 350,
+      "exts": ["js", "jsx", "ts", "tsx", "json", "ejs", "css"],
+      "fmt": true
+    },
+
+    "logger": {
+      "quiet": false
+    }
+  }
+}
