@@ -13,10 +13,18 @@ import {
 // internals
 import { router }              from "./routes/router.js";
 
+import * as flags from "https://deno.land/std/flags/mod.ts";
+
+
 const ejsEngine = await engineFactory.getEjsEngine();
 const oakAdapter = await adapterFactory.getOakAdapter();
 
 const app = new Application();
+
+const {args} = Deno;
+const DEFAULT_PORT = 8000;
+const argPort = flags.parse(args).port;
+const port = argPort ? Number(argPort) : DEFAULT_PORT;
 
 app.use(viewEngine(oakAdapter,ejsEngine));
 
@@ -43,5 +51,5 @@ I think it's a bug of oak.
 // });
 
 
-console.log("Server is running 🦕")
-await app.listen({ port: 8000 });
+console.log(`Server is running 🦕 on port ${port}`)
+await app.listen({ port: port });

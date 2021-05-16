@@ -1,0 +1,1 @@
+web: deno run -A --allow-net=:${PORT} --cached-only --unstable server.js --port=${PORT}

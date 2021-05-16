@@ -2,7 +2,7 @@
   "$schema": "https://deno.land/x/denon@2.4.7/schema.json",
   "scripts": {
     "start": {
-      "cmd": "deno run server.js",
+      "cmd": "deno run server.js --port=8000",
       "desc": "run my server.js file",
 
       "allow": [
