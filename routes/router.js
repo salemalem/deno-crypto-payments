@@ -1,10 +1,8 @@
 import { Router } from "../dependencies.js";
 import { OAuth2Client } from "../dependencies.js";
 
-import { config } from "https://deno.land/x/dotenv/mod.ts";
-
-const { CLIENT_ID, CLIENT_SECRET } = config();
-
+const CLIENT_ID     = Deno.env.get(CLIENT_ID);
+const CLIENT_SECRET = Deno.env.get(CLIENT_SECRET);
 
 const oauth2Client = new OAuth2Client({
   clientId: CLIENT_ID,
