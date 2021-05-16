@@ -36,10 +36,9 @@ router
         Authorization: `Bearer ${tokens.accessToken}`,
       },
     });
-    const { name } = await userResponse.json();
-  
-    context.response.body = userResponse.json();
-    // context.response.redirect("get-started");
+    // const { name } = await userResponse.json();
+    console.log(userResponse);
+    context.response.redirect("get-started");
   })
   .post("/register", async (context) => {
     const form = JSON.stringify(await multiParser(context.request.serverRequest));
