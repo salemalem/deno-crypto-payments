@@ -44,7 +44,7 @@ router
 
   })
   .get("/protected", async (context, next) => {
-    if (githubOauthUserId !== 123) {
+    if (githubOauthUserId === 123) {
       await next();
     } else {
       return;
