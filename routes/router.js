@@ -40,12 +40,12 @@ router
     // const { name } = await userResponse.json();
     const { id, name } = await userResponse.json();
     githubOauthUserId = id;
-    context.response.body = `Hi, ${name}. You are logined. Now go to https://deno-crypto-payments.herokuapp.com/get-started`;
-
+    // context.response.body = `Hi, ${name}. You are logined. Now go to https://deno-crypto-payments.herokuapp.com/get-started`;
+    context.response.redirect("https://deno-crypto-payments.herokuapp.com/get-started");
   })
   .get("/protected", async (context, next) => {
     if (githubOauthUserId !== 123) {
-      context.response.redirect(`You are logined as ${githubOauthUserId}.`)
+      context.response.body = `You are logined as ${githubOauthUserId}.`;
     } else {
       context.response.redirect("https://deno-crypto-payments.herokuapp.com/get-started")
     }
