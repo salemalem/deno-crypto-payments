@@ -3,7 +3,7 @@ import { OAuth2Client } from "../dependencies.js";
 
 const GITHUB_OAUTH_CLIENT_ID     = Deno.env.toObject().GITHUB_OAUTH_CLIENT_ID;
 const GITHUB_OAUTH_CLIENT_SECRET = Deno.env.toObject().GITHUB_OAUTH_CLIENT_SECRET;
-const userOauth2Response;
+const userOauth2Response = '';
 
 const oauth2Client = new OAuth2Client({
   clientId: GITHUB_OAUTH_CLIENT_ID,
