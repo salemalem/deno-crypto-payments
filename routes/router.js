@@ -44,10 +44,10 @@ router
 
   })
   .get("/protected", async (context, next) => {
-    if (githubOauthUserId === 123) {
-      await next();
+    if (githubOauthUserId !== 123) {
+      context.response.redirect(`You are logined as ${githubOauthUserId}.`)
     } else {
-      return;
+      context.response.redirect("https://deno-crypto-payments.herokuapp.com/get-started")
     }
   }, async(context) => {
     context.response.body = "hi";
