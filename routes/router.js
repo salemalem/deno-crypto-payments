@@ -3,7 +3,7 @@ import { OAuth2Client } from "../dependencies.js";
 
 const GITHUB_OAUTH_CLIENT_ID     = Deno.env.toObject().GITHUB_OAUTH_CLIENT_ID;
 const GITHUB_OAUTH_CLIENT_SECRET = Deno.env.toObject().GITHUB_OAUTH_CLIENT_SECRET;
-const userOauth2Response = '';
+const githubOauthUserId = 123;
 
 const oauth2Client = new OAuth2Client({
   clientId: GITHUB_OAUTH_CLIENT_ID,
@@ -38,27 +38,19 @@ router
       },
     });
     // const { name } = await userResponse.json();
-    // console.log(userResponse);
-    // userOauth2Response = await userResponse.json();
-    const {id, login} = await userResponse.json();
-    context.response.body = `ID: ${id}   Login: ${login}`;
-    // context.response.redirect("https://deno-crypto-payments.herokuapp.com/get-started");
+    const { id } = await userResponse.json();
+    githubOauthUserId = id;
+    context.response.redirect("https://deno-crypto-payments.herokuapp.com/get-started");
   })
-  .post("/register", async (context) => {
-    const form = JSON.stringify(await multiParser(context.request.serverRequest));
-    const parse = JSON.parse(form);
-    console.log(parse["fields"]["username"]);
-    context.response.redirect("/")
-  })
-  // .get("/login", async (context) => {
-    // context.render(`${Deno.cwd()}/views/login.ejs`);
-    // context.response.redirect("/");
-  // })
-  .post("/login", async (context) => {
-    const form = JSON.stringify(await multiParser(context.request.serverRequest));
-    const parse = JSON.parse(form);
-    console.log(parse["fields"]["username"]);
-    context.response.redirect("/")
+  .get("/protected", async (context, next) => {
+    if (githubOauthUserId !== 123) {
+      await next();
+    } else {
+      return;
+    }
+  }, async(context) => {
+    context.response.body = "hi";
   });
+
 
 export { router };
