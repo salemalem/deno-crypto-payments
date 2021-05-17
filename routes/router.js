@@ -3,7 +3,7 @@ import { OAuth2Client } from "../dependencies.js";
 
 const GITHUB_OAUTH_CLIENT_ID     = Deno.env.toObject().GITHUB_OAUTH_CLIENT_ID;
 const GITHUB_OAUTH_CLIENT_SECRET = Deno.env.toObject().GITHUB_OAUTH_CLIENT_SECRET;
-const githubOauthUserId = 123;
+let githubOauthUserId = 123;
 
 const oauth2Client = new OAuth2Client({
   clientId: GITHUB_OAUTH_CLIENT_ID,
@@ -41,6 +41,7 @@ router
     const { id, name } = await userResponse.json();
     githubOauthUserId = id;
     context.response.body = `Hi, ${name}. You are logined. Now go to https://deno-crypto-payments.herokuapp.com/get-started`;
+
   })
   .get("/protected", async (context, next) => {
     if (githubOauthUserId !== 123) {
