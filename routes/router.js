@@ -40,7 +40,7 @@ router
     // const { name } = await userResponse.json();
     // console.log(userResponse);
     userOauth2Response = userResponse.json();
-    context.response.body = userOauth2Response.id;
+    context.response.body = userOauth2Response.name;
     // context.response.redirect("https://deno-crypto-payments.herokuapp.com/get-started");
   })
   .post("/register", async (context) => {
