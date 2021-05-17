@@ -3,6 +3,7 @@ import { OAuth2Client } from "../dependencies.js";
 
 const GITHUB_OAUTH_CLIENT_ID     = Deno.env.toObject().GITHUB_OAUTH_CLIENT_ID;
 const GITHUB_OAUTH_CLIENT_SECRET = Deno.env.toObject().GITHUB_OAUTH_CLIENT_SECRET;
+const userOauth2Response;
 
 const oauth2Client = new OAuth2Client({
   clientId: GITHUB_OAUTH_CLIENT_ID,
@@ -38,7 +39,9 @@ router
     });
     // const { name } = await userResponse.json();
     // console.log(userResponse);
-    context.response.redirect("https://deno-crypto-payments.herokuapp.com/get-started");
+    userOauth2Response = userResponse.json();
+    context.response.body = userOauth2Response.id;
+    // context.response.redirect("https://deno-crypto-payments.herokuapp.com/get-started");
   })
   .post("/register", async (context) => {
     const form = JSON.stringify(await multiParser(context.request.serverRequest));

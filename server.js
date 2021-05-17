@@ -15,6 +15,7 @@ import { router }              from "./routes/router.js";
 import { flags }               from "./dependencies.js";
 
 
+
 const ejsEngine = await engineFactory.getEjsEngine();
 const oakAdapter = await adapterFactory.getOakAdapter();
 
