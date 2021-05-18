@@ -7,7 +7,7 @@ export {
 }                              from "https://deno.land/x/view_engine@v1.5.0/mod.ts";
 
 // mongo database
-export { MongoClient } from "https://deno.land/x/mongo@v0.13.0/mod.ts"
+export { MongoClient } from "https://deno.land/x/mongo@v0.22.0/mod.ts"
 
 // environmental variable at .env
 export { config }      from "https://deno.land/x/dotenv@v2.0.0/mod.ts";
