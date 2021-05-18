@@ -1,6 +1,8 @@
 import { Router } from "../dependencies.js";
 import { OAuth2Client } from "../dependencies.js";
 
+import { users } from "../database.js";
+
 const GITHUB_OAUTH_CLIENT_ID     = Deno.env.toObject().GITHUB_OAUTH_CLIENT_ID;
 const GITHUB_OAUTH_CLIENT_SECRET = Deno.env.toObject().GITHUB_OAUTH_CLIENT_SECRET;
 
@@ -40,8 +42,13 @@ router
     });
     // const { name } = await userResponse.json();
     const { id, name } = await userResponse.json();
+
     // context.response.body = `Hi, ${name}. You are logined. Now go to https://deno-crypto-payments.herokuapp.com/get-started`;
     context.cookies.set("userID", id);
+    users.insertOne({
+      githubUserID: id,
+      name: name,
+    });
     context.response.redirect("https://deno-crypto-payments.herokuapp.com/get-started");
   })
   .get("/protected", async (context) => {
