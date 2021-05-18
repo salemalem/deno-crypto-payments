@@ -10,9 +10,15 @@
 
     <h3>Follow these steps to set up your own page:</h3>
     <ul>
-      <li><a class="btn-auth btn-github" href="/login">
-        1. Sign in with GitHub
-    </a></li>
+      <%if (userID) { %>
+        <li><a class="btn-auth btn-github" href="/login">
+          1. You are signed in as <%= userID %>. 
+        </a></li>
+      <% } else { %>
+        <li><a class="btn-auth btn-github" href="/login">
+          1. Sign in with GitHub
+        </a></li>
+      <% } %>
     </ul>
   </div>
 </div>

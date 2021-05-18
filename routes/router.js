@@ -19,7 +19,9 @@ const router = new Router();
 
 router
   .get("/get-started", async (context) => {
-    context.render(`${Deno.cwd()}/views/get_started.ejs`);
+    context.render(`${Deno.cwd()}/views/get_started.ejs`, {
+      userID: context.cookies.get("userID")
+    });
   })
   .get("/login", async (context) => {
     context.response.redirect(
@@ -44,7 +46,7 @@ router
   })
   .get("/protected", async (context) => {
     if (context.cookies.get("userID")) {
-      context.response.body = `You are logined as ${context.cookies.get("userID")}.`;
+      context.response.body = `You are logined as ${context.cookies.get("userID")}. Now go to "https://deno-crypto-payments.herokuapp.com/get-started`;
     } else {
       context.response.redirect("https://deno-crypto-payments.herokuapp.com/get-started")
     }
