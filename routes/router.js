@@ -1,7 +1,10 @@
 import { Router } from "../dependencies.js";
 import { OAuth2Client } from "../dependencies.js";
 
-import { users } from "../database.js";
+// import { users } from "../database.js";
+
+import { Client } from "https://deno.land/x/mysql/mod.ts";
+
 
 const GITHUB_OAUTH_CLIENT_ID     = Deno.env.toObject().GITHUB_OAUTH_CLIENT_ID;
 const GITHUB_OAUTH_CLIENT_SECRET = Deno.env.toObject().GITHUB_OAUTH_CLIENT_SECRET;
@@ -15,6 +18,13 @@ const oauth2Client = new OAuth2Client({
   defaults: {
     scope: "read:user",
   },
+});
+
+const client = await new Client().connect({
+  hostname: "us-cdbr-east-03.cleardb.com",
+  username: "b1d981b0f3d4ff:",
+  db: "heroku_86fd3431580f8f4",
+  password: "c76c05eb",
 });
 
 const router = new Router();
@@ -45,10 +55,12 @@ router
 
     // context.response.body = `Hi, ${name}. You are logined. Now go to https://deno-crypto-payments.herokuapp.com/get-started`;
     context.cookies.set("userID", id);
-    // users.insertOne({
-    //   githubUserID: id,
-    //   name: name,
-    // });
+    /* Mongodb doesn't support remote database connection yet so disabled these lines.
+    users.insertOne({
+      githubUserID: id,
+      name: name,
+    });
+    */
     context.response.redirect("https://deno-crypto-payments.herokuapp.com/get-started");
   })
   .get("/protected", async (context) => {
