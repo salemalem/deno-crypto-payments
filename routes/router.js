@@ -45,10 +45,10 @@ router
 
     // context.response.body = `Hi, ${name}. You are logined. Now go to https://deno-crypto-payments.herokuapp.com/get-started`;
     context.cookies.set("userID", id);
-    users.insertOne({
-      githubUserID: id,
-      name: name,
-    });
+    // users.insertOne({
+    //   githubUserID: id,
+    //   name: name,
+    // });
     context.response.redirect("https://deno-crypto-payments.herokuapp.com/get-started");
   })
   .get("/protected", async (context) => {
