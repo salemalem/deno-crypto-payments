@@ -27,6 +27,17 @@ const client = await new Client().connect({
   password: "c76c05eb",
 });
 
+await client.execute(`DROP TABLE IF EXISTS users`);
+await client.execute(`
+    CREATE TABLE users (
+        id int(11) NOT NULL AUTO_INCREMENT,
+        gitHubID int(11) NOT NULL,
+        name varchar(100) NOT NULL,
+        created_at timestamp not null default current_timestamp,
+        PRIMARY KEY (id)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+`);
+
 const router = new Router();
 
 router
@@ -53,6 +64,12 @@ router
     // const { name } = await userResponse.json();
     const { id, name } = await userResponse.json();
 
+    let result = await client.execute(`INSERT INTO gitHubID, users(name) values(?)`, [
+      id,
+      name
+    ]);
+    console.log(result);
+    // { affectedRows: 1, lastInsertId: 1 }
     // context.response.body = `Hi, ${name}. You are logined. Now go to https://deno-crypto-payments.herokuapp.com/get-started`;
     context.cookies.set("userID", id);
     /* Mongodb doesn't support remote database connection yet so disabled these lines.
