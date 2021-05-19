@@ -83,7 +83,7 @@ router
     // if (form) {
       // console.log(form)
     // }
-    context.response.body = 'uploaded';
+    context.response.body = context.request.serverRequest;
   });
 
 
