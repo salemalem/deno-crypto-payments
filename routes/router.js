@@ -83,7 +83,7 @@ router
     // if (form) {
       // console.log(form)
     // }
-    context.response.body = await (context.request.serverRequest).toString();
+    context.response.body = await (context.request.serverRequest).toObject();
   });
 
 
