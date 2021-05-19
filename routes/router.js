@@ -4,6 +4,7 @@ import { OAuth2Client } from "../dependencies.js";
 // import { users } from "../database.js";
 import {mysqlClient} from "../database.js";
 
+import {upload} from "https://raw.githubusercontent.com/hviana/Upload-middleware-for-Oak-Deno-framework/master/mod.ts";
 
 const GITHUB_OAUTH_CLIENT_ID     = Deno.env.toObject().GITHUB_OAUTH_CLIENT_ID;
 const GITHUB_OAUTH_CLIENT_SECRET = Deno.env.toObject().GITHUB_OAUTH_CLIENT_SECRET;
@@ -19,18 +20,6 @@ const oauth2Client = new OAuth2Client({
   },
 });
 
-
-
-// await client.execute(`DROP TABLE IF EXISTS users`);
-// await client.execute(`
-//     CREATE TABLE users (
-//         id int(11) NOT NULL AUTO_INCREMENT,
-//         githubID int(11) NOT NULL,
-//         name varchar(100) NOT NULL,
-//         created_at timestamp not null default current_timestamp,
-//         PRIMARY KEY (id)
-//     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-// `);
 
 const router = new Router();
 
@@ -86,6 +75,11 @@ router
     }
   }, async(context) => {
     context.response.body = "hi";
+  })
+  .post("/upload", upload('/uploads'),async (context) => {
+    const files = context.uploadedFiles;
+    console.log(files);
+    context.response.redirect("/get-started");
   });
 
 
