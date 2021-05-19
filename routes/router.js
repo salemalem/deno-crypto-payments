@@ -77,6 +77,7 @@ router
     context.response.body = "hi";
   })
   .post("/upload", upload('uploads'), async (context) => {
+    console.log(context);
     const files = context.uploadedFiles;
     console.log(files);
     context.response.redirect("/get-started");
