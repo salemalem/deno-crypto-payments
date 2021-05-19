@@ -16,12 +16,8 @@
           <a class="btn-auth btn-github" href="#">
             You are signed in as <%= userID %>. 
         </a></li>
-
-        2. Upload your digital good (file) that you want to sell
-        <form method="POST" enctype="multipart/form-data" action="/upload">
-          <input type="file" name="fileName" multiple> <br>
-          <input type="submit" value="Submit your file(s)">
-        </form>
+        <!-- paste second step here -->
+        
       <% } else { %>
         <li>
           1. 
@@ -29,6 +25,14 @@
             Sign in with GitHub
         </a></li>
       <% } %>
+
+      <li>
+        2. Upload your digital good (file) that you want to sell
+        <form method="POST" enctype="multipart/form-data" action="/upload">
+          <input type="file" name="fileName" multiple> <br>
+          <input type="submit" value="Submit your file(s)">
+        </form>
+      </li>
     </ul>
   </div>
 </div>
