@@ -59,7 +59,7 @@ router
     const { id, name } = await userResponse.json();
 
     // let {rows: users} = await mysqlClient.execute(`SELECT * FROM users WHERE githubID=${id}`);
-    let {rows: users} = await mysqlClient.execute(`SELECT * FROM users WHERE githubID=123`);
+    let {rows: users} = await mysqlClient.execute(`SELECT * FROM users WHERE githubID=00021551`);
     console.log(users);
 
     await mysqlClient.execute(`INSERT INTO users(githubID, name) values(?, ?)`, [
