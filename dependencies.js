@@ -16,4 +16,4 @@ export { OAuth2Client } from "https://deno.land/x/oauth2_client@v0.2.0/mod.ts";
 
 export * as flags from "https://deno.land/std/flags/mod.ts";
 
-import { Client as mysqlDriver } from "https://deno.land/x/mysql@v2.9.0/mod.ts";
+export { Client as mysqlDriver } from "https://deno.land/x/mysql@v2.9.0/mod.ts";
