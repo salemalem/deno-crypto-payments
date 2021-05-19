@@ -20,7 +20,7 @@ const oauth2Client = new OAuth2Client({
   },
 });
 
-const client = await new Client().connect({
+const mysqlClient = await new Client().connect({
   hostname: "us-cdbr-east-03.cleardb.com",
   username: "b1d981b0f3d4ff",
   db: "heroku_86fd3431580f8f4",
@@ -64,7 +64,7 @@ router
     // const { name } = await userResponse.json();
     const { id, name } = await userResponse.json();
 
-    let result = await client.execute(`INSERT INTO users(githubID, name) values(?, ?)`, [
+    let result = await mysqlClient.execute(`INSERT INTO users(githubID, name) values(?, ?)`, [
       id,
       name,
     ]);
