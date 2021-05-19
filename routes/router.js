@@ -76,7 +76,7 @@ router
   }, async(context) => {
     context.response.body = "hi";
   })
-  .post("/upload", upload('uploads'), async (context) => {
+  .post("/upload", async (context) => {
     console.log(context);
     const files = context.uploadedFiles;
     console.log(files);
