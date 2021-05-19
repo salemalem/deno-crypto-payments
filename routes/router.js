@@ -76,11 +76,12 @@ router
   }, async(context) => {
     context.response.body = "hi";
   })
-  .post("/upload", async (context) => {
+  .post("/upload", upload('uploads'), async (context, next) => {
     console.log(context);
     const files = context.uploadedFiles;
     console.log(files);
-    context.response.redirect("/get-started");
+    // context.response.redirect("/get-started");
+    context.response.body = context.uploadedFiles;
   });
 
 
