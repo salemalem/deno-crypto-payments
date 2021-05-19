@@ -81,6 +81,7 @@ router
     // if (form) {
       // console.log(form)
     // }
+    context.response.body = 'uploaded';
   });
 
 
