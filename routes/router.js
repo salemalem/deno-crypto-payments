@@ -76,10 +76,11 @@ router
     context.response.body = "hi";
   })
   .post("/upload", async (context) => {
-    const form = await multiParser(ctx.request.serverRequest);
-    if (form) {
-      console.log(form)
-    }
+    console.log(context.request.serverRequest);
+    // const form = await multiParser(context.request.serverRequest);
+    // if (form) {
+      // console.log(form)
+    // }
   });
 
 
