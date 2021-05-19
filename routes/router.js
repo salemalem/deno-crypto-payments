@@ -58,16 +58,14 @@ router
     // const { name } = await userResponse.json();
     const { id, name } = await userResponse.json();
 
-    // let {rows: users} = await mysqlClient.execute(`SELECT * FROM users WHERE githubID=${id}`);
-    let {rows: users} = await mysqlClient.execute(`SELECT * FROM users WHERE githubID=00021551`);
+    let {rows: users} = await mysqlClient.execute(`SELECT * FROM users WHERE githubID=${id}`);
     if(!users.length) {
-      console.log("I am empty")
+      // insert new user if his githubID isn't found in database
+      await mysqlClient.execute(`INSERT INTO users(githubID, name) values(?, ?)`, [
+        id,
+        name,
+      ]);
     }
-
-    await mysqlClient.execute(`INSERT INTO users(githubID, name) values(?, ?)`, [
-      id,
-      name,
-    ]);
     // let result = await client.execute("SELECT * FROM users");
     // { affectedRows: 1, lastInsertId: 1 }
     // context.response.body = `Hi, ${name}. You are logined. Now go to https://deno-crypto-payments.herokuapp.com/get-started`;
