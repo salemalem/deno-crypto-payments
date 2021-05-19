@@ -46,9 +46,9 @@ When I enable lines below it gives an error when I try to enable static files.
 When I disable no error and pages work too.
 I think it's a bug of oak.
 */
-// app.addEventListener('error', event => {
-//   console.log(event.error);
-// });
+app.addEventListener('error', event => {
+  console.log(event.error);
+});
 
 
 console.log(`Server is running 🦕 on port ${port}`)
