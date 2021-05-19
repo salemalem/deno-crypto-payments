@@ -3,7 +3,7 @@ import { OAuth2Client } from "../dependencies.js";
 
 // import { users } from "../database.js";
 
-import { Client } from "https://deno.land/x/mysql/mod.ts";
+import { Client } from "https://deno.land/x/mysql@v2.9.0/mod.ts";
 
 
 const GITHUB_OAUTH_CLIENT_ID     = Deno.env.toObject().GITHUB_OAUTH_CLIENT_ID;
@@ -64,11 +64,8 @@ router
     // const { name } = await userResponse.json();
     const { id, name } = await userResponse.json();
 
-    // let result = await client.execute(`INSERT INTO users(githubID, name) values(?)`, [
-    //   id,
-    //   name
-    // ]);
-    let result = await client.execute("SELECT * FROM users");
+    let result = await client.execute(`INSERT INTO users(githubID, name) values(${id}, ${name})`);
+    // let result = await client.execute("SELECT * FROM users");
     console.log(result);
     // { affectedRows: 1, lastInsertId: 1 }
     // context.response.body = `Hi, ${name}. You are logined. Now go to https://deno-crypto-payments.herokuapp.com/get-started`;
