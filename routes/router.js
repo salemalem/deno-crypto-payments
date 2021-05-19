@@ -58,8 +58,9 @@ router
     // const { name } = await userResponse.json();
     const { id, name } = await userResponse.json();
 
-    // let checkDuplicateFromTable = await mysqlClient.execute(`SELECT * FROM users WHERE githubID=${}`);
-
+    let {rows: users} = await mysqlClient.execute(`SELECT * FROM users WHERE githubID=${id}`);
+    console.log(users);
+    
     await mysqlClient.execute(`INSERT INTO users(githubID, name) values(?, ?)`, [
       id,
       name,
