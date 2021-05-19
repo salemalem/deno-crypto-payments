@@ -65,7 +65,7 @@ router
     const { id, name } = await userResponse.json();
 
     let result = await client.execute(`INSERT INTO users(name) values(?)`, [
-      "Shyngys Shynbolatov",
+      name,
     ]);
     // let result = await client.execute("SELECT * FROM users");
     console.log(result);
