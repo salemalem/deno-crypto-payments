@@ -27,16 +27,16 @@ const client = await new Client().connect({
   password: "c76c05eb",
 });
 
-await client.execute(`DROP TABLE IF EXISTS users`);
-await client.execute(`
-    CREATE TABLE users (
-        id int(11) NOT NULL AUTO_INCREMENT,
-        githubID int(11) NOT NULL,
-        name varchar(100) NOT NULL,
-        created_at timestamp not null default current_timestamp,
-        PRIMARY KEY (id)
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-`);
+// await client.execute(`DROP TABLE IF EXISTS users`);
+// await client.execute(`
+//     CREATE TABLE users (
+//         id int(11) NOT NULL AUTO_INCREMENT,
+//         githubID int(11) NOT NULL,
+//         name varchar(100) NOT NULL,
+//         created_at timestamp not null default current_timestamp,
+//         PRIMARY KEY (id)
+//     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+// `);
 
 const router = new Router();
 
