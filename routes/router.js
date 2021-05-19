@@ -22,7 +22,7 @@ const oauth2Client = new OAuth2Client({
 
 const client = await new Client().connect({
   hostname: "us-cdbr-east-03.cleardb.com",
-  username: "b1d981b0f3d4ff:",
+  username: "b1d981b0f3d4ff",
   db: "heroku_86fd3431580f8f4",
   password: "c76c05eb",
 });
