@@ -17,3 +17,14 @@ const client = new MongoClient();
 
 
 // export {database, users};
+
+import {mysqlDriver} from "./dependencies.js";
+
+const mysqlClient = await new mysqlDriver().connect({
+  hostname: "us-cdbr-east-03.cleardb.com",
+  username: "b1d981b0f3d4ff",
+  db: "heroku_86fd3431580f8f4",
+  password: "c76c05eb",
+});
+
+export {mysqlClient};

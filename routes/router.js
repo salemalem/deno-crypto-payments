@@ -2,8 +2,7 @@ import { Router } from "../dependencies.js";
 import { OAuth2Client } from "../dependencies.js";
 
 // import { users } from "../database.js";
-
-import { Client } from "https://deno.land/x/mysql@v2.9.0/mod.ts";
+import {mysqlClient} from "../database.js";
 
 
 const GITHUB_OAUTH_CLIENT_ID     = Deno.env.toObject().GITHUB_OAUTH_CLIENT_ID;
@@ -20,12 +19,7 @@ const oauth2Client = new OAuth2Client({
   },
 });
 
-const mysqlClient = await new Client().connect({
-  hostname: "us-cdbr-east-03.cleardb.com",
-  username: "b1d981b0f3d4ff",
-  db: "heroku_86fd3431580f8f4",
-  password: "c76c05eb",
-});
+
 
 // await client.execute(`DROP TABLE IF EXISTS users`);
 // await client.execute(`
@@ -64,12 +58,13 @@ router
     // const { name } = await userResponse.json();
     const { id, name } = await userResponse.json();
 
-    let result = await mysqlClient.execute(`INSERT INTO users(githubID, name) values(?, ?)`, [
+    let checkDuplicateFromTable = await mysqlClient.execute(`SELECT * FROM users WHERE githubID=`);
+
+    await mysqlClient.execute(`INSERT INTO users(githubID, name) values(?, ?)`, [
       id,
       name,
     ]);
     // let result = await client.execute("SELECT * FROM users");
-    console.log(result);
     // { affectedRows: 1, lastInsertId: 1 }
     // context.response.body = `Hi, ${name}. You are logined. Now go to https://deno-crypto-payments.herokuapp.com/get-started`;
     context.cookies.set("userID", id);
