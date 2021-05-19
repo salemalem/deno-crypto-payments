@@ -20,11 +20,13 @@ const client = new MongoClient();
 
 import {mysqlDriver} from "./dependencies.js";
 
+const CLEARDB_MYSQL_PASSWORD     = Deno.env.toObject().CLEARDB_MYSQL_PASSWORD;
+
 const mysqlClient = await new mysqlDriver().connect({
   hostname: "us-cdbr-east-03.cleardb.com",
   username: "b1d981b0f3d4ff",
   db: "heroku_86fd3431580f8f4",
-  password: "c76c05eb",
+  password: CLEARDB_MYSQL_PASSWORD,
 });
 
 export {mysqlClient};
