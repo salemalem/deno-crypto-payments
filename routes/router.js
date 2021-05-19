@@ -31,7 +31,7 @@ await client.execute(`DROP TABLE IF EXISTS users`);
 await client.execute(`
     CREATE TABLE users (
         id int(11) NOT NULL AUTO_INCREMENT,
-        gitHubID int(11) NOT NULL,
+        githubID int(11) NOT NULL,
         name varchar(100) NOT NULL,
         created_at timestamp not null default current_timestamp,
         PRIMARY KEY (id)
@@ -64,7 +64,7 @@ router
     // const { name } = await userResponse.json();
     const { id, name } = await userResponse.json();
 
-    let result = await client.execute(`INSERT INTO gitHubID, users(name) values(?)`, [
+    let result = await client.execute(`INSERT INTO users(githubID, name) values(?)`, [
       id,
       name
     ]);
