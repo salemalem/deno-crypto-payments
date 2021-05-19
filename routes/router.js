@@ -64,7 +64,9 @@ router
     // const { name } = await userResponse.json();
     const { id, name } = await userResponse.json();
 
-    let result = await client.execute(`INSERT INTO users(githubID, name) values(${id}, ${name})`);
+    let result = await client.execute(`INSERT INTO users(name) values(?)`, [
+      "Shyngys Shynbolatov",
+    ]);
     // let result = await client.execute("SELECT * FROM users");
     console.log(result);
     // { affectedRows: 1, lastInsertId: 1 }
