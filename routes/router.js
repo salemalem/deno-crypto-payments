@@ -76,9 +76,7 @@ router
     context.response.body = "hi";
   })
   .post("/upload", async (context) => {
-    console.log(context);
-    console.log(context.request);
-    console.log(context.request.serverRequest);
+    console.log(await context.request.body().value.read());
     // const form = await multiParser(context.request.serverRequest);
     // if (form) {
     //   console.log(form)
