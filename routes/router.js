@@ -18,6 +18,7 @@ const oauth2Client = new OAuth2Client({
   },
 });
 
+let filePath;
 
 const router = new Router();
 
@@ -80,6 +81,7 @@ router
     console.log(result); //"/app/static/uploads//1987657d41e3db0549ddc12d77df9d87a8ffc989.png",
     // console.log(result.files[0]["originalName"]);
     // console.log(result.files[0]["filename"]);
+    filePath = result.files[0]["filename"];
     // result.outPath = `${Deno.cwd()}/uploads/`;
     context.response.body = "uploaded";
   })
@@ -95,7 +97,9 @@ router
     context.response.redirect("/get-started");
   })
   .get("/download_file", async (context) => {
-    context.response.redirect("uploads//1987657d41e3db0549ddc12d77df9d87a8ffc989.png");
+    let filePathForUrl = filePath.split('static/');
+    console.log(filePathForUrl);
+    context.response.redirect("/get-started");
   });
 
 
