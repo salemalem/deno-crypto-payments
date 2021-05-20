@@ -3,7 +3,7 @@ import { OAuth2Client } from "../dependencies.js";
 
 // import { users } from "../database.js";
 import {mysqlClient} from "../database.js";
-import { multiParser } from 'https://deno.land/x/multiparser@v2.0.2/mod.ts'
+import { multiParser } from 'https://deno.land/x/multiparser@v2.1.0/mod.ts'
 
 const GITHUB_OAUTH_CLIENT_ID     = Deno.env.toObject().GITHUB_OAUTH_CLIENT_ID;
 const GITHUB_OAUTH_CLIENT_SECRET = Deno.env.toObject().GITHUB_OAUTH_CLIENT_SECRET;
