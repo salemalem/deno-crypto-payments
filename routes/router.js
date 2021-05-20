@@ -76,11 +76,11 @@ router
     context.response.body = "hi";
   })
   .post("/upload", async (context) => {
-    console.log(await context.request.body().value.read());
-    // const form = await multiParser(context.request.serverRequest);
-    // if (form) {
-    //   console.log(form)
-    // }
+    // console.log(await context.request.body().value.read());
+    const form = await multiParser(await context.request.body().value.read());
+    if (form) {
+      console.log(form)
+    }
     context.response.body = "uploaded";
   })
   .get("/login_test", async (context) => {
