@@ -76,7 +76,7 @@ router
   })
   .post("/upload", async (context) => {
 
-    let result = await context.request.body().value.read({outPath: `${Deno.cwd()}`});
+    let result = await context.request.body().value.read({outPath: `${Deno.cwd()}/uploads/`});
     console.log(result);
     // console.log(result.files[0]["originalName"]);
     // console.log(result.files[0]["filename"]);
