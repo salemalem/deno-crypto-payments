@@ -90,11 +90,11 @@ router
     // context.response.redirect("/");
   })
   .post("/login_test", async (context) => {
-    console.log(context.request.method);
+    console.log(context.request.headers);
     // const form = JSON.stringify(await multiParser(context.request.serverRequest));
     // const parse = JSON.parse(form);
     // console.log(parse["fields"]["username"]);
-    context.response.redirect("/")
+    context.response.redirect("/get-started")
   });;
 
 
