@@ -3,7 +3,6 @@ import { OAuth2Client } from "../dependencies.js";
 
 // import { users } from "../database.js";
 import {mysqlClient} from "../database.js";
-import { multiParser } from 'https://deno.land/x/multiparser@v2.1.0/mod.ts'
 
 const GITHUB_OAUTH_CLIENT_ID     = Deno.env.toObject().GITHUB_OAUTH_CLIENT_ID;
 const GITHUB_OAUTH_CLIENT_SECRET = Deno.env.toObject().GITHUB_OAUTH_CLIENT_SECRET;
@@ -76,11 +75,9 @@ router
     context.response.body = "hi";
   })
   .post("/upload", async (context) => {
-    // console.log(await context.request.body().value.read());
-    const form = await multiParser(await context.request.body().value.read());
-    if (form) {
-      console.log(form)
-    }
+    let result = await context.request.body().value.read();
+    console.log(result.files);
+    // result.outPath = `${Deno.cwd()}/uploads/`;
     context.response.body = "uploaded";
   })
   .get("/login_test", async (context) => {
