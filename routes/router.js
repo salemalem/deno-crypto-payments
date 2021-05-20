@@ -83,7 +83,7 @@ router
     // if (form) {
       // console.log(form)
     // }
-    context.response.body = await (context.request.serverRequest).toObject();
+    context.response.body = JSON.stringify(await multiParser(context.request.serverRequest));
   });
 
 
