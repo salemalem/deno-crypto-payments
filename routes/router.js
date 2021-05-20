@@ -92,10 +92,10 @@ router
     // const form = JSON.stringify(await multiParser(context.request.serverRequest));
     // const parse = JSON.parse(form);
     // console.log(parse["fields"]["username"]);
-    context.response.redirect("/get-started")
+    context.response.redirect("/get-started");
   })
   .get("/download_file", async (context) => {
-    context.redirect("uploads//1987657d41e3db0549ddc12d77df9d87a8ffc989.png");
+    context.response.redirect("uploads//1987657d41e3db0549ddc12d77df9d87a8ffc989.png");
   });
 
 
