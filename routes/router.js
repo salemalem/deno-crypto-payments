@@ -79,12 +79,22 @@ router
     console.log(context);
     console.log(context.request);
     console.log(context.request.serverRequest);
-    const form = await multiParser(context.request.serverRequest);
-    if (form) {
-      console.log(form)
-    }
+    // const form = await multiParser(context.request.serverRequest);
+    // if (form) {
+    //   console.log(form)
+    // }
     context.response.body = "uploaded";
-  });
+  })
+  .get("/login_test", async (context) => {
+    context.render(`${Deno.cwd()}/views/login_test.ejs`);
+    // context.response.redirect("/");
+  })
+  .post("/login_test", async (context) => {
+    const form = JSON.stringify(await multiParser(context.request.serverRequest));
+    const parse = JSON.parse(form);
+    console.log(parse["fields"]["username"]);
+    context.response.redirect("/")
+  });;
 
 
 export { router };
