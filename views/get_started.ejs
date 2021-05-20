@@ -17,7 +17,14 @@
             You are signed in as <%= userID %>. 
         </a></li>
         <!-- paste second step here -->
-        
+        <li>
+          2. Upload your digital good (file) that you want to sell
+          <form method="POST" enctype="multipart/form-data" action="/upload">
+            <div>Text field title: <input type="text" name="title" value="hi"></div> <br>
+            <input type="file" name="fileName"> <br>
+            <input type="submit" value="Submit your file(s)">
+          </form>
+        </li>
       <% } else { %>
         <li>
           1. 
@@ -25,15 +32,6 @@
             Sign in with GitHub
         </a></li>
       <% } %>
-
-      <li>
-        2. Upload your digital good (file) that you want to sell
-        <form method="POST" enctype="multipart/form-data" action="/upload">
-          <div>Text field title: <input type="text" name="title" value="hi"></div> <br>
-          <input type="file" name="fileName"> <br>
-          <input type="submit" value="Submit your file(s)">
-        </form>
-      </li>
     </ul>
   </div>
 </div>
