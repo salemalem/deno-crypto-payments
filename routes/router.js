@@ -90,7 +90,7 @@ router
     // context.response.redirect("/");
   })
   .post("/login_test", async (context) => {
-    console.log(await context.request.body().value);
+    console.log(await context.request.body().value.read());
     // const form = JSON.stringify(await multiParser(context.request.serverRequest));
     // const parse = JSON.parse(form);
     // console.log(parse["fields"]["username"]);
