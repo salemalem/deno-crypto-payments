@@ -76,7 +76,7 @@ router
   })
   .post("/upload", async (context) => {
 
-    let result = await context.request.body().value.read({outPath: `${Deno.cwd()}/uploads/`});
+    let result = await context.request.body().value.read({outPath: `${Deno.cwd()}/static/uploads/`});
     console.log(result);
     // console.log(result.files[0]["originalName"]);
     // console.log(result.files[0]["filename"]);
@@ -93,7 +93,10 @@ router
     // const parse = JSON.parse(form);
     // console.log(parse["fields"]["username"]);
     context.response.redirect("/get-started")
-  });;
+  })
+  .get("/download_file", async (context) => {
+    context.redirect("/get-started");
+  });
 
 
 export { router };
