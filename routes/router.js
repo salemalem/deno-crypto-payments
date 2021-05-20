@@ -99,7 +99,7 @@ router
   .get("/download_file", async (context) => {
     let filePathForUrl = filePath.split('static/');
     console.log(filePathForUrl);
-    context.response.redirect("/get-started");
+    context.response.redirect(filePathForUrl[1]);
   });
 
 
