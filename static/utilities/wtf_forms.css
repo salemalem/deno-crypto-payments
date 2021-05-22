@@ -235,9 +235,8 @@
   right: 0;
   left: 0;
   z-index: 5;
-  height: 2rem;
   padding: .5rem 1rem;
-  line-height: 1.5;
+  line-height: 1;
   color: #555;
   background-color: #fff;
   border: .075rem solid #ddd;
@@ -261,7 +260,7 @@
   content: "Browse";
   height: 2.5rem;
   padding: .5rem 1rem;
-  line-height: 1.5;
+  line-height: 1;
   color: #555;
   background-color: #eee;
   border: .075rem solid #ddd;
