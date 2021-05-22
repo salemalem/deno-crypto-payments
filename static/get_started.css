@@ -154,6 +154,10 @@
 
 
 /* form starting stylings ------------------------------- */
+form.file-upload-form > *{
+    color: black;
+}
+
 .group 			  { 
     position:relative; 
     margin-top:45px; 
