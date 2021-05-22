@@ -154,9 +154,6 @@
 
 
 /* form starting stylings ------------------------------- */
-form.file-upload-form > input > *{
-    color: black !important;
-}
 
 .group 			  { 
     position:relative; 
@@ -174,7 +171,7 @@ form.file-upload-form > input > *{
   
   /* LABEL ======================================= */
   label 				 {
-    /* color:white;  */
+    color: black; 
     font-size:18px;
     font-weight:normal;
     position:absolute;
@@ -201,7 +198,7 @@ form.file-upload-form > input > *{
     width:0;
     bottom:1px; 
     position:absolute;
-    background:#5264AE; 
+    background:#7689d4; 
     transition:0.2s ease all; 
     -moz-transition:0.2s ease all; 
     -webkit-transition:0.2s ease all;
