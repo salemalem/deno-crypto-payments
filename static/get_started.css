@@ -189,6 +189,10 @@
     font-size:14px;
     color:#8dc997;
   }
+
+  input:focus {
+      color: black;
+  }
   
   /* BOTTOM BARS ================================= */
   .bar 	{ position:relative; display:block; width:300px; }
