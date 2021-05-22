@@ -190,6 +190,10 @@
     color:#8dc997;
   }
 
+  input {
+      color: #222;
+  }
+
   input:focus {
       color: black;
   }
