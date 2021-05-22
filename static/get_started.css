@@ -155,7 +155,7 @@
 
 /* form starting stylings ------------------------------- */
 form.file-upload-form > *{
-    color: black;
+    color: black !important;
 }
 
 .group 			  { 
