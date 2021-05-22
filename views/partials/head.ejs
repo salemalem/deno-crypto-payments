@@ -6,6 +6,8 @@
   <title><%- title %></title>
   <link rel="stylesheet" href="/default.css">
   <link rel="stylesheet" href="/fonts.css">
-  <link rel="stylesheet" href="/<%- css_file %>">
+  <% for(var i=0; i < css_files.length; i++) { %>
+    <link rel="stylesheet" href="/<%- css_files[i] %>">
+  <% } %>
 </head>
 <body>
