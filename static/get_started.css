@@ -154,7 +154,7 @@
 
 
 /* form starting stylings ------------------------------- */
-form.file-upload-form > *{
+form.file-upload-form > input > *{
     color: black !important;
 }
 
