@@ -156,7 +156,7 @@
 /* form starting stylings ------------------------------- */
 .group 			  { 
     position:relative; 
-    margin-bottom:45px; 
+    margin-top:45px; 
   }
   input 				{
     font-size:18px;
@@ -170,7 +170,7 @@
   
   /* LABEL ======================================= */
   label 				 {
-    color:#999; 
+    color:white; 
     font-size:18px;
     font-weight:normal;
     position:absolute;
@@ -186,7 +186,7 @@
   input:focus ~ label, input:valid ~ label 		{
     top:-20px;
     font-size:14px;
-    color:#5264AE;
+    color:#8dc997;
   }
   
   /* BOTTOM BARS ================================= */
