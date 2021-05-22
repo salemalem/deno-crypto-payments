@@ -258,7 +258,7 @@
   z-index: 6;
   display: block;
   content: "Browse";
-  height: 2.5rem;
+  /* height: 2.5rem; */
   padding: .5rem 1rem;
   line-height: 1;
   color: #555;
