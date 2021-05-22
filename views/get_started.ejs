@@ -23,8 +23,12 @@
         <li>
           2. Upload your digital good (file) that you want to sell
           <form method="POST" enctype="multipart/form-data" action="/upload">
-            <div>Text field title: <input type="text" name="title" value="hi"></div> <br>
-            <input type="file" name="fileName"> <br>
+            <div>Title: <input type="text" name="title" value="title"></div> <br>
+            <div>Description: <input type="text" name="title" value="description"></div> <br>
+            <label class="file">
+              <input type="file" id="file" aria-label="File browser example">
+              <span class="file-custom"></span>
+            </label>
             <input type="submit" value="Submit your file(s)">
           </form>
         </li>
