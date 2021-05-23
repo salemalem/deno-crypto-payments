@@ -81,26 +81,22 @@ router
 
     let currentUserID = context.cookies.get("userID");
     let outPathForFile = `${Deno.cwd()}/static/uploads/${currentUserID}`;
-    // TODO: create EXAMPLE.md file in out path so no such file or directory error won't occur
+    // TODO: 
     // before letting the user to download it copy it and rename as its original name
     // tutorial: https://www.woolha.com/tutorials/deno-rename-file-directory-examples
-
-    // let dirExists = await ensureDir(outPathForFile);
-    // console.log(dirExists);
     await ensureDir(outPathForFile);
     // console.log(Deno.mkdirSync(outPathForFile));
     let result = await context.request.body().value.read({outPath: outPathForFile});
     console.log(result); //"/app/static/uploads//1987657d41e3db0549ddc12d77df9d87a8ffc989.png",
-    // console.log(result.files);
-    // await mysqlClient.execute(`INSERT INTO uploads(githubID, title, description, tron_address, trx_amount, file_path, original_file_name) values(?, ?, ?, ?, ?, ?, ?)`, [
-    //   currentUserID,
-    //   result["fields"]["title"],
-    //   result["fields"]["description"],
-    //   result["fields"]["your-tron-address"],
-    //   result["fields"]["amount"],
-    //   result["files"][0]["filename"],
-    //   result["files"][0]["originalName"],
-    // ]);
+    await mysqlClient.execute(`INSERT INTO uploads(githubID, title, description, tron_address, trx_amount, file_path, original_file_name) values(?, ?, ?, ?, ?, ?, ?)`, [
+      currentUserID,
+      result["fields"]["title"],
+      result["fields"]["description"],
+      result["fields"]["your-tron-address"],
+      result["fields"]["amount"],
+      result["files"][0]["filename"],
+      result["files"][0]["originalName"],
+    ]);
     // console.log(result.files[0]["originalName"]);
     // console.log(result.files[0]["filename"]);
     // filePath = result.files[0]["filename"];
