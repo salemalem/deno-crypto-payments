@@ -87,7 +87,7 @@ router
 
     // let dirExists = await ensureDir(outPathForFile);
     // console.log(dirExists);
-    ensureDir(outPathForFile)).then((result) => {
+    ensureDir(outPathForFile).then((result) => {
       console.log(result);
     }).catch((error) => {
       console.log(error);
