@@ -126,7 +126,7 @@ router
     if(!seller.length) {
       body_output = "404 Seller not found";
     } else{
-      vbody_output = seller["name"];
+      body_output = seller["name"];
     }
     context.response.body = body_output;
     // context.render()
