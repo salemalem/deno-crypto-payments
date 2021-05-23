@@ -4,7 +4,7 @@ import { OAuth2Client } from "../dependencies.js";
 // import { users } from "../database.js";
 import {mysqlClient} from "../database.js";
 
-import { ensureDirSync } from "https://deno.land/std@0.97.0/fs/mod.ts";
+import { ensureDir } from "https://deno.land/std@0.97.0/fs/mod.ts";
 
 const GITHUB_OAUTH_CLIENT_ID     = Deno.env.toObject().GITHUB_OAUTH_CLIENT_ID;
 const GITHUB_OAUTH_CLIENT_SECRET = Deno.env.toObject().GITHUB_OAUTH_CLIENT_SECRET;
@@ -85,12 +85,12 @@ router
     // before letting the user to download it copy it and rename as its original name
     // tutorial: https://www.woolha.com/tutorials/deno-rename-file-directory-examples
 
-    // if (!ensureDirSync(outPathForFile)) {
-      // Deno.mkdirSync(outPathForFile);
-    // }
-    console.log(ensureDirSync(outPathForFile));
-    console.log(!ensureDirSync(outPathForFile));
-    console.log(Deno.mkdirSync(outPathForFile));
+    ensureDir(outPathForFile)..then((result) => {
+      Deno.mkdirSync(outPathForFile);
+    }).catch((error) => {
+      console.log(error);
+    });
+    // console.log(Deno.mkdirSync(outPathForFile));
     // let result = await context.request.body().value.read({outPath: outPathForFile});
     // console.log(result); //"/app/static/uploads//1987657d41e3db0549ddc12d77df9d87a8ffc989.png",
     // console.log(result.files);
