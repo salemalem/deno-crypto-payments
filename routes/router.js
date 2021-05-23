@@ -4,6 +4,8 @@ import { OAuth2Client } from "../dependencies.js";
 // import { users } from "../database.js";
 import {mysqlClient} from "../database.js";
 
+import { ensureDirSync } from "https://deno.land/std/fs/mod.ts";
+
 const GITHUB_OAUTH_CLIENT_ID     = Deno.env.toObject().GITHUB_OAUTH_CLIENT_ID;
 const GITHUB_OAUTH_CLIENT_SECRET = Deno.env.toObject().GITHUB_OAUTH_CLIENT_SECRET;
 
@@ -78,7 +80,15 @@ router
   .post("/upload", async (context) => {
 
     let currentUserID = context.cookies.get("userID");
-    let result = await context.request.body().value.read({outPath: `${Deno.cwd()}/static/uploads/${currentUserID}`});
+    let outPathForFile = `${Deno.cwd()}/static/uploads/${currentUserID}`;
+    // TODO: create EXAMPLE.md file in out path so no such file or directory error won't occur
+    // before letting the user to download it copy it and rename as its original name
+    // tutorial: https://www.woolha.com/tutorials/deno-rename-file-directory-examples
+
+    if (!ensureDirSync(outPathForFile)) {
+      Deno.mkdirSync(outPathForFile);
+    }
+    let result = await context.request.body().value.read({outPath: outPathForFile});
     console.log(result); //"/app/static/uploads//1987657d41e3db0549ddc12d77df9d87a8ffc989.png",
     console.log(result.files);
     await mysqlClient.execute(`INSERT INTO uploads(githubID, title, description, tron_address, trx_amount, file_path, original_file_name) values(?, ?, ?, ?, ?, ?, ?)`, [
