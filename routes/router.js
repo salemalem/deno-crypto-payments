@@ -86,7 +86,7 @@ router
     // tutorial: https://www.woolha.com/tutorials/deno-rename-file-directory-examples
 
     let dirExists = await ensureDir(outPathForFile);
-    console(dirExists);
+    console.log(dirExists);
     // ensureDir(outPathForFile).then((result) => {
       // Deno.mkdirSync(outPathForFile);
     // }).catch((error) => {
