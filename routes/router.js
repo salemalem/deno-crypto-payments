@@ -87,11 +87,7 @@ router
 
     // let dirExists = await ensureDir(outPathForFile);
     // console.log(dirExists);
-    ensureDir(outPathForFile).then((result) => {
-      console.log(result);
-    }).catch((error) => {
-      console.log(error);
-    });
+    await ensureDir(outPathForFile);
     // console.log(Deno.mkdirSync(outPathForFile));
     let result = await context.request.body().value.read({outPath: outPathForFile});
     console.log(result); //"/app/static/uploads//1987657d41e3db0549ddc12d77df9d87a8ffc989.png",
