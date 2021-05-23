@@ -87,14 +87,14 @@ router
 
     // let dirExists = await ensureDir(outPathForFile);
     // console.log(dirExists);
-    ensureDir(`${Deno.cwd()}/static/`).then((result) => {
+    ensureDir(outPathForFile)).then((result) => {
       console.log(result);
     }).catch((error) => {
       console.log(error);
     });
     // console.log(Deno.mkdirSync(outPathForFile));
-    // let result = await context.request.body().value.read({outPath: outPathForFile});
-    // console.log(result); //"/app/static/uploads//1987657d41e3db0549ddc12d77df9d87a8ffc989.png",
+    let result = await context.request.body().value.read({outPath: outPathForFile});
+    console.log(result); //"/app/static/uploads//1987657d41e3db0549ddc12d77df9d87a8ffc989.png",
     // console.log(result.files);
     // await mysqlClient.execute(`INSERT INTO uploads(githubID, title, description, tron_address, trx_amount, file_path, original_file_name) values(?, ?, ?, ?, ?, ?, ?)`, [
     //   currentUserID,
