@@ -1,4 +1,7 @@
-import { Router } from "../dependencies.js";
+import { 
+  Router, 
+  helpers,
+} from "../dependencies.js";
 import { OAuth2Client } from "../dependencies.js";
 
 // import { users } from "../database.js";
@@ -116,8 +119,9 @@ router
     context.response.redirect(filePathForUrl[1]);
   })
   .get("/seller/:githubID", async (context) => {
-    const result = await mysqlClient.execute(`SELECT name FROM users WHERE githubID=${githubID}`);
-    console.log(result);
+    const { githubID } = helpers.getQuery(context, { mergeParams: true });
+    // const result = await mysqlClient.execute(`SELECT name FROM users WHERE githubID=${githubID}`);
+    // console.log(result);
     context.response.body = githubID;
     // context.render()
   });

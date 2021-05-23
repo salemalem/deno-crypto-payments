@@ -1,4 +1,8 @@
-export { Application, Router, send } from "https://deno.land/x/oak@v7.4.1/mod.ts";
+export { 
+  Application, 
+  Router, 
+  helpers 
+} from "https://deno.land/x/oak@v7.4.1/mod.ts";
 export { multiParser }         from 'https://deno.land/x/multiparser@v2.1.0/mod.ts';
 export {
   viewEngine,
