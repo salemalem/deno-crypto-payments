@@ -97,10 +97,6 @@ router
       result["files"][0]["filename"],
       result["files"][0]["originalName"],
     ]);
-    // console.log(result.files[0]["originalName"]);
-    // console.log(result.files[0]["filename"]);
-    // filePath = result.files[0]["filename"];
-    // result.outPath = `${Deno.cwd()}/uploads/`;
     context.response.body = "uploaded";
   })
   .get("/login_test", async (context) => {
@@ -118,6 +114,12 @@ router
     let filePathForUrl = filePath.split('static/');
     console.log(filePathForUrl);
     context.response.redirect(filePathForUrl[1]);
+  })
+  .get("/seller/:githubID", async (context) => {
+    const result = await mysqlClient.execute(`SELECT name FROM users WHERE githubID=${githubID}`);
+    console.log(result);
+    context.response.body = githubID;
+    // context.render()
   });
 
 
