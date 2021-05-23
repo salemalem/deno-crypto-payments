@@ -122,7 +122,7 @@ router
     const { githubID } = helpers.getQuery(context, { mergeParams: true });
     const {rows: seller} = await mysqlClient.execute(`SELECT name FROM users WHERE githubID=${githubID}`);
     console.log(seller.length);
-    if(seller.length) {
+    if(seller.length > 0) {
       context.response.body = seller["name"];
     } else {
       context.response.body = "404. Seller is not found."
