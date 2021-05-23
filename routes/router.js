@@ -4,7 +4,7 @@ import { OAuth2Client } from "../dependencies.js";
 // import { users } from "../database.js";
 import {mysqlClient} from "../database.js";
 
-import { ensureDirSync } from "https://deno.land/std/fs/mod.ts";
+import { ensureDirSync } from "https://deno.land/std@0.97.0/fs/mod.ts";
 
 const GITHUB_OAUTH_CLIENT_ID     = Deno.env.toObject().GITHUB_OAUTH_CLIENT_ID;
 const GITHUB_OAUTH_CLIENT_SECRET = Deno.env.toObject().GITHUB_OAUTH_CLIENT_SECRET;
