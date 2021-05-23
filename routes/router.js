@@ -121,11 +121,12 @@ router
   .get("/seller/:githubID", async (context) => {
     const { githubID } = helpers.getQuery(context, { mergeParams: true });
     const {rows: seller} = await mysqlClient.execute(`SELECT name FROM users WHERE githubID=${githubID}`);
-    try {
-      context.response.body = seller["name"];
-    } catch (error) {
-      console.log(error);
-    }
+    context.response.body = githubID;
+    // try {
+      // context.response.body = seller["name"];
+    // } catch (error) {
+      // console.log(error);
+    // }
     // context.render()
   });
 
