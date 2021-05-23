@@ -117,17 +117,17 @@ router
     let filePathForUrl = filePath.split('static/');
     console.log(filePathForUrl);
     context.response.redirect(filePathForUrl[1]);
-  })
-  .get("/seller/:githubID", async (context) => {
-    const { githubID } = helpers.getQuery(context, { mergeParams: true });
-    const {rows: seller} = await mysqlClient.execute(`SELECT name FROM users WHERE githubID=${githubID}`);
-    try {
-      context.response.body = seller["name"];
-    } catch (error) {
-      console.log(error);
-    }
-    // context.render()
   });
+  // .get("/seller/:githubID", async (context) => {
+    // const { githubID } = helpers.getQuery(context, { mergeParams: true });
+    // const {rows: seller} = await mysqlClient.execute(`SELECT name FROM users WHERE githubID=${githubID}`);
+    // try {
+      context.response.body = seller["name"];
+    // } catch (error) {
+    //   console.log(error);
+    // }
+    // context.render()
+  // });
 
 
 export { router };
