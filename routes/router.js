@@ -123,8 +123,9 @@ router
     const {rows: seller} = await mysqlClient.execute(`SELECT name FROM users WHERE githubID=${githubID}`);
     if(seller.length) {
       context.response.body = seller["name"];
+    } else {
+      context.response.body = "404. Seller is not found."
     }
-    context.response.body = "404. Seller is not found."
     // context.render()
   });
 
