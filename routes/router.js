@@ -85,7 +85,9 @@ router
     // before letting the user to download it copy it and rename as its original name
     // tutorial: https://www.woolha.com/tutorials/deno-rename-file-directory-examples
 
-    let dirExists = await ensureDir(outPathForFile);
+    // let dirExists = await ensureDir(outPathForFile);
+    // console.log(dirExists);
+    let dirExists = await ensureDir(Deno.cwd());
     console.log(dirExists);
     // ensureDir(outPathForFile).then((result) => {
       // Deno.mkdirSync(outPathForFile);
