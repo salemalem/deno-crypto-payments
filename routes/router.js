@@ -87,7 +87,7 @@ router
 
     // let dirExists = await ensureDir(outPathForFile);
     // console.log(dirExists);
-    ensureDir("./static").then((result) => {
+    ensureDir(`${Deno.cwd()}/static/`).then((result) => {
       console.log(result);
     }).catch((error) => {
       console.log(error);
