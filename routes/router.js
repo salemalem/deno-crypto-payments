@@ -85,11 +85,13 @@ router
     // before letting the user to download it copy it and rename as its original name
     // tutorial: https://www.woolha.com/tutorials/deno-rename-file-directory-examples
 
-    ensureDir(outPathForFile)..then((result) => {
-      Deno.mkdirSync(outPathForFile);
-    }).catch((error) => {
-      console.log(error);
-    });
+    let dirExists = await ensureDir(outPathForFile);
+    console(dirExists);
+    // ensureDir(outPathForFile).then((result) => {
+      // Deno.mkdirSync(outPathForFile);
+    // }).catch((error) => {
+      // console.log(error);
+    // });
     // console.log(Deno.mkdirSync(outPathForFile));
     // let result = await context.request.body().value.read({outPath: outPathForFile});
     // console.log(result); //"/app/static/uploads//1987657d41e3db0549ddc12d77df9d87a8ffc989.png",
