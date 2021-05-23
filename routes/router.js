@@ -79,6 +79,7 @@ router
 
     let result = await context.request.body().value.read({outPath: `${Deno.cwd()}/static/uploads/`});
     console.log(result); //"/app/static/uploads//1987657d41e3db0549ddc12d77df9d87a8ffc989.png",
+    console.log(result.files);
     // console.log(result.files[0]["originalName"]);
     // console.log(result.files[0]["filename"]);
     // filePath = result.files[0]["filename"];
