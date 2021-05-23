@@ -83,7 +83,7 @@ router
     // console.log(result.files[0]["filename"]);
     // filePath = result.files[0]["filename"];
     // result.outPath = `${Deno.cwd()}/uploads/`;
-    // context.response.body = "uploaded";
+    context.response.body = "uploaded";
   })
   .get("/login_test", async (context) => {
     context.render(`${Deno.cwd()}/views/login_test.ejs`);
