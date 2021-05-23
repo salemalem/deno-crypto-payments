@@ -1,6 +1,7 @@
 export { 
   Application, 
   Router, 
+  send, 
   helpers 
 } from "https://deno.land/x/oak@v7.4.1/mod.ts";
 export { multiParser }         from 'https://deno.land/x/multiparser@v2.1.0/mod.ts';
