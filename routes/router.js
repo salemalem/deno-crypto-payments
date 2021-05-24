@@ -84,11 +84,7 @@ router
 
     let currentUserID = context.cookies.get("userID");
     let outPathForFile = `${Deno.cwd()}/static/uploads/${currentUserID}`;
-    // TODO: 
-    // before letting the user to download it copy it and rename as its original name
-    // tutorial: https://www.woolha.com/tutorials/deno-rename-file-directory-examples
     await ensureDir(outPathForFile);
-    // console.log(Deno.mkdirSync(outPathForFile));
     let result = await context.request.body().value.read({outPath: outPathForFile});
     console.log(result); //"/app/static/uploads//1987657d41e3db0549ddc12d77df9d87a8ffc989.png",
     await mysqlClient.execute(`INSERT INTO uploads(githubID, title, description, tron_address, trx_amount, file_path, original_file_name) values(?, ?, ?, ?, ?, ?, ?)`, [
@@ -128,8 +124,15 @@ router
     } else{
       body_output = seller[0]["name"];
     }
-    context.response.body = body_output;
-    // context.render()
+    // context.response.body = body_output;
+    // TODO: 
+    // before letting the user to download it copy it and rename as its original name
+    // tutorial: https://www.woolha.com/tutorials/deno-rename-file-directory-examples
+    // select * from uploads where githubID = githubID
+    // and list them on single page.
+    // P.S. design from deno blog
+
+    context.render(`${Deno.cwd()}/views/pages/single_seller.ejs`);
   });
 
 
