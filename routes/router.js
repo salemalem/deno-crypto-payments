@@ -124,7 +124,7 @@ router
     if(!seller.length) {
       context.response.body = "404 Seller not found";
     } else{
-      const {rows: uploads} = await mysqlClient.execute(`SELECT title, description, trx_amount FROM uploads WHERE githubID=${githubID}`);
+      const {rows: uploads} = await mysqlClient.execute(`SELECT title, description, trx_amount, upload_key FROM uploads WHERE githubID=${githubID}`);
       // context.render(`${Deno.cwd()}/views/pages/single_seller.ejs`, {
       //   name: seller[0]["name"],
       //   uploads: uploads
