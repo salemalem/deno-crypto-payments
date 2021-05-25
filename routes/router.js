@@ -125,12 +125,12 @@ router
       context.response.body = "404 Seller not found";
     } else{
       const {rows: uploads} = await mysqlClient.execute(`SELECT title, description, trx_amount FROM uploads WHERE githubID=${githubID}`);
-      context.render(`${Deno.cwd()}/views/pages/single_seller.ejs`, {
-        name: seller[0]["name"],
-        uploads: uploads
-      });
+      // context.render(`${Deno.cwd()}/views/pages/single_seller.ejs`, {
+      //   name: seller[0]["name"],
+      //   uploads: uploads
+      // });
     }
-    // context.response.body = body_output;
+    context.response.body = uploads;
     // TODO: 
     // before letting the user to download it copy it and rename as its original name
     // tutorial: https://www.woolha.com/tutorials/deno-rename-file-directory-examples
