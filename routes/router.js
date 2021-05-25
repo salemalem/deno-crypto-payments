@@ -137,7 +137,7 @@ router
     // select * from uploads where githubID = githubID
     // and list them on single page.
   })
-  .get("/seller/:githubID//payment", async (context) => {
+  .get("/seller/:githubID/:uploadID/payment", async (context) => {
     const { githubID } = helpers.getQuery(context, { mergeParams: true });
   });
 

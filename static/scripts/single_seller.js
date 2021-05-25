@@ -1,3 +1,3 @@
 function purchaseProduct(uploadID) {
-  console.log(uploadID)
+  alert(uploadID)
 }

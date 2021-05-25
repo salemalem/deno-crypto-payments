@@ -15,7 +15,7 @@
       <%= uploads[i].title %> <br>
       <%= uploads[i].description %> <br>
       <%= uploads[i].trx_amount %> <br>
-      <button id="<%= uploads[i].upload_key %>" class="purchaseProduct" onclick="purchaseProduct(this.id)">Purchase NOW</button>
+      <button id="<%- uploads[i].upload_key %>" class="purchaseProduct" onclick="purchaseProduct(this.id)">Purchase NOW</button>
     </article>
   <% } %>
 </div>
