@@ -125,11 +125,10 @@ router
       context.response.body = "404 Seller not found";
     } else{
       const {rows: uploads} = await mysqlClient.execute(`SELECT title, description, trx_amount, upload_key FROM uploads WHERE githubID=${githubID}`);
-      // context.render(`${Deno.cwd()}/views/pages/single_seller.ejs`, {
-      //   name: seller[0]["name"],
-      //   uploads: uploads
-      // });
-      context.response.body = uploads;
+      context.render(`${Deno.cwd()}/views/pages/single_seller.ejs`, {
+        name: seller[0]["name"],
+        uploads: uploads
+      });
     }
     // TODO: 
     // before letting the user to download it copy it and rename as its original name
