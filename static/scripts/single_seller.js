@@ -1,3 +1,4 @@
 function purchaseProduct(uploadID) {
-  alert(uploadID.id);
+  // alert(uploadID.id);
+  console.log(uploadID);
 }
