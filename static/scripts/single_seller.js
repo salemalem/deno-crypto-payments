@@ -1,3 +1,3 @@
 function purchaseProduct(uploadID) {
-  alert(uploadID);
+  alert(uploadID.id);
 }
