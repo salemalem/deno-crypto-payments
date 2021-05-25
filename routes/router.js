@@ -127,7 +127,7 @@ router
       const {rows: uploads} = await mysqlClient.execute(`SELECT title, description, trx_amount, upload_key FROM uploads WHERE githubID=${githubID}`);
       context.render(`${Deno.cwd()}/views/pages/single_seller.ejs`, {
         name: seller[0]["name"],
-        uploads: uploads
+        uploads: uploads,
       });
     }
     // TODO: 
@@ -136,14 +136,14 @@ router
   })
   .get("/seller/:githubID/:uploadID/payment", async (context) => {
     const { githubID, uploadID } = helpers.getQuery(context, { mergeParams: true });
-    const {row: product} = await mysqlClient.execute(`SELECT title, tron_address, trx_amount FROM uploads WHERE upload_key=4;`);
-    console.log(product);
-    // context.response.body = product;
-    context.response.body = githubID + " " + uploadID;
-    // context.render(`${Deno.cwd()}/views/pages/payment_page.ejs`, {
-    //   githubID: githubID,
-    //   uploadID: uploadID
-    // });
+    const {title, tron_address, trx_amount} = await mysqlClient.execute(`SELECT title, tron_address, trx_amount FROM uploads WHERE upload_key=${uploadID}`);
+    context.render(`${Deno.cwd()}/views/pages/payment_page.ejs`, {
+      githubID: githubID,
+      uploadID: uploadID,
+      title: title,
+      tron_address: tron_address,
+      trx_amount: trx_amount,
+    });
   });
 
 
