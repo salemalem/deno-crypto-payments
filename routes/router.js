@@ -136,7 +136,10 @@ router
   })
   .get("/seller/:githubID/:uploadID/payment", async (context) => {
     const { githubID, uploadID } = helpers.getQuery(context, { mergeParams: true });
-    context.response.body = uploadID;
+    context.render(`${Deno.cwd()}/views/pages/payment_page.ejs`, {
+      githubID: githubID,
+      uploadID: uploadID
+    });
   });
 
 
