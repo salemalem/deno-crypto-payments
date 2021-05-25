@@ -133,11 +133,10 @@ router
     // TODO: 
     // before letting the user to download it copy it and rename as its original name
     // tutorial: https://www.woolha.com/tutorials/deno-rename-file-directory-examples
-    // select * from uploads where githubID = githubID
-    // and list them on single page.
   })
   .get("/seller/:githubID/:uploadID/payment", async (context) => {
-    const { githubID } = helpers.getQuery(context, { mergeParams: true });
+    const { githubID, uploadID } = helpers.getQuery(context, { mergeParams: true });
+    context.response.body = uploadID;
   });
 
 
