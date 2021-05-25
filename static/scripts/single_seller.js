@@ -1,0 +1,3 @@
+purchaseProduct(uploadID) {
+  alert(uploadID);
+}
