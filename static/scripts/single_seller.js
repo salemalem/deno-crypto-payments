@@ -1,3 +1,3 @@
-purchaseProduct(uploadID) {
+function purchaseProduct(uploadID) {
   alert(uploadID);
 }
