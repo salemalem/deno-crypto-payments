@@ -114,11 +114,13 @@ router
     console.log(filePathForUrl);
     context.response.redirect(filePathForUrl[1]);
   })
+  .get("/sellers", async (context) => {
+    const {users: sellers} = await mysqlClient.execute(`SELECT githubID, name FROM users`);
+    context.response.body = sellers;
+  })
   .get("/seller/:githubID", async (context) => {
     const { githubID } = helpers.getQuery(context, { mergeParams: true });
     const {rows: seller} = await mysqlClient.execute(`SELECT name FROM users WHERE githubID=${githubID}`);
-    // context.response.body = seller;
-    let body_output;
     if(!seller.length) {
       context.response.body = "404 Seller not found";
     } else{
@@ -127,7 +129,6 @@ router
       context.render(`${Deno.cwd()}/views/pages/single_seller.ejs`, {
         uploads: uploads
       });
-      // context.response.body = uploads;
     }
     // context.response.body = body_output;
     // TODO: 
@@ -135,6 +136,9 @@ router
     // tutorial: https://www.woolha.com/tutorials/deno-rename-file-directory-examples
     // select * from uploads where githubID = githubID
     // and list them on single page.
+  })
+  .get("/seller/:githubID//payment", async (context) => {
+    const { githubID } = helpers.getQuery(context, { mergeParams: true });
   });
 
 
