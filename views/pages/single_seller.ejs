@@ -6,86 +6,13 @@
 }) %>
 
 <div class="archive">
-  <article class="article">
-    Title <br>
-    Description Description Description Description Description Description Description Description
-  </article>
-  <article class="article">
-    Title <br>
-    Description
-  </article>
-  <article class="article">
-    Title <br>
-    Description
-  </article>
-  <article class="article">
-    Title <br>
-    Description
-  </article>
-  <article class="article">
-    Title <br>
-    Description
-  </article>
-  <article class="article">
-    Title <br>
-    Description
-  </article>
-  <article class="article">
-    Title <br>
-    Description
-  </article>
-  <article class="article">
-    Title <br>
-    Description
-  </article>
-  <article class="article">
-    Title <br>
-    Description
-  </article>
-  <article class="article">
-    Title <br>
-    Description
-  </article>
-  <article class="article">
-    Title <br>
-    Description
-  </article>
-  <article class="article">
-    Title <br>
-    Description
-  </article>
-  <article class="article">
-    Title <br>
-    Description
-  </article>
-  <article class="article">
-    Title <br>
-    Description
-  </article>
-  <article class="article">
-    Title <br>
-    Description
-  </article>
-  <article class="article">
-    Title <br>
-    Description
-  </article>
-  <article class="article">
-    Title <br>
-    Description
-  </article>
-  <article class="article">
-    Title <br>
-    Description
-  </article>
-  <article class="article">
-    Title <br>
-    Description
-  </article>
-  <article class="article">
-    Title <br>
-    Description
-  </article>
+  <% for(var i=0; i<uploads.length; i++) {%>
+    <article class="article">
+      <%= uploads[i].title %> <br>
+      <%= uploads[i].description %> <br>
+      <%= uploads[i].trx_amount %>
+    </article>
+  <% } %>
 </div>
 
 
