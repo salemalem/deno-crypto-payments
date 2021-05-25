@@ -136,7 +136,7 @@ router
   })
   .get("/seller/:githubID/:uploadID/payment", async (context) => {
     const { githubID, uploadID } = helpers.getQuery(context, { mergeParams: true });
-    const {row: product} = await mysqlClient.execute(`SELECT title, tron_address, trx_amount FROM uploads WHERE upload_key=4`);
+    const {row: product} = await mysqlClient.execute(`SELECT title, tron_address, trx_amount FROM uploads WHERE upload_key=4;`);
     console.log(product);
     // context.response.body = product;
     context.response.body = githubID + " " + uploadID;
