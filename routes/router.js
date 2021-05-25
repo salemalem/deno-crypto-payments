@@ -129,8 +129,8 @@ router
       //   name: seller[0]["name"],
       //   uploads: uploads
       // });
+      context.response.body = uploads;
     }
-    context.response.body = uploads;
     // TODO: 
     // before letting the user to download it copy it and rename as its original name
     // tutorial: https://www.woolha.com/tutorials/deno-rename-file-directory-examples
