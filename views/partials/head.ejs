@@ -6,9 +6,15 @@
   <title><%- title %></title>
   <link rel="stylesheet" href="/default.css">
   <link rel="stylesheet" href="/fonts.css">
-  <% for(var i=0; i < css_files.length; i++) { %>
-    <link rel="stylesheet" href="/<%- css_files[i] %>">
-  <% } %>
+  <% if(css_files.length > 0){ %>  
+    <% for(var i=0; i < css_files.length; i++) { %>
+      <link rel="stylesheet" href="/<%- css_files[i] %>">
+    <% } %>
+  <% } %>  
 </head>
-<script defer src="/scripts/single_seller.js"></script>
+<% if(js_files.length > 0){ %>  
+  <% for(var i=0; i < js_files.length; i++) { %>
+    <script defer src="<%- js_files[i] %>"></script>
+  <% } %>
+<% } %>  
 <body>
