@@ -1,3 +1,3 @@
 function purchaseProduct(uploadID) {
-  alert(uploadID)
+  window.open(window.location.href + "/" + uploadID);
 }
