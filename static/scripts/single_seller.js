@@ -3,4 +3,6 @@ function purchaseProduct(uploadID) {
 }
 
 let purchaseProductButtons = document.getElementsByClassName("purchaseProduct");
-purchaseProduct.addEventListener("click", purchaseProduct(this));
+purchaseProduct.onClick = function(this) {
+  alert(this);
+}
