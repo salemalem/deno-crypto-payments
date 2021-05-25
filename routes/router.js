@@ -120,9 +120,14 @@ router
     // context.response.body = seller;
     let body_output;
     if(!seller.length) {
-      body_output = "404 Seller not found";
+      context.response.body = "404 Seller not found";
     } else{
       body_output = seller[0]["name"];
+      const {rows: uploads} = await mysqlClient.execute(`SELECT title, description, trx_amount FROM uploads WHERE githubID=${githubID}`);
+      // context.render(`${Deno.cwd()}/views/pages/single_seller.ejs`, {
+      //   uploads: uploads
+      // });
+      context.response.body = uploads;
     }
     // context.response.body = body_output;
     // TODO: 
@@ -130,9 +135,6 @@ router
     // tutorial: https://www.woolha.com/tutorials/deno-rename-file-directory-examples
     // select * from uploads where githubID = githubID
     // and list them on single page.
-    // P.S. design from deno blog
-
-    context.render(`${Deno.cwd()}/views/pages/single_seller.ejs`);
   });
 
 
