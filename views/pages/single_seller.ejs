@@ -11,11 +11,11 @@
 
 <div class="archive">
   <% for(let i=0; i<uploads.length; i++) {%>
-    <article class="article">
+    <article class="article" id="<%= uploads[i].upload_key %>">
       <%= uploads[i].title %> <br>
       <%= uploads[i].description %> <br>
       <%= uploads[i].trx_amount %> <br>
-      <button onclick="purchaseProduct(" + <%= uploads[i].upload_key %> + ")">Purchase NOW</button>
+      <button id="<%= uploads[i].upload_key %>" class="purchaseProduct">Purchase NOW</button>
     </article>
   <% } %>
 </div>
