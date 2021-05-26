@@ -137,10 +137,11 @@ router
   .get("/seller/:githubID/:uploadID/payment", async (context) => {
     const { githubID, uploadID } = helpers.getQuery(context, { mergeParams: true });
     const result = await mysqlClient.execute(`SELECT title, tron_address, trx_amount FROM uploads WHERE upload_key=${uploadID}`);
-    if (result["rows"].length < 1) {
-      context.response.body = "404 Product is not found"
-    }
-    context.response.body = result["rows"];
+    // if (result["rows"].length < 1) {
+      // context.response.body = "404 Product is not found"
+    // }
+    // context.response.body = result["rows"];
+    context.response.body = result["rows"].length;
     // const {title, tron_address, trx_amount} = await mysqlClient.execute(`SELECT title, tron_address, trx_amount FROM uploads WHERE upload_key=${uploadID}`);
     // context.render(`${Deno.cwd()}/views/pages/payment_page.ejs`, {
     //   githubID: githubID,
