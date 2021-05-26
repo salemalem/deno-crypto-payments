@@ -136,14 +136,16 @@ router
   })
   .get("/seller/:githubID/:uploadID/payment", async (context) => {
     const { githubID, uploadID } = helpers.getQuery(context, { mergeParams: true });
-    const {title, tron_address, trx_amount} = await mysqlClient.execute(`SELECT title, tron_address, trx_amount FROM uploads WHERE upload_key=${uploadID}`);
-    context.render(`${Deno.cwd()}/views/pages/payment_page.ejs`, {
-      githubID: githubID,
-      uploadID: uploadID,
-      title: title,
-      tron_address: tron_address,
-      trx_amount: trx_amount,
-    });
+    const result = await mysqlClient.execute(`SELECT title, tron_address, trx_amount FROM uploads WHERE upload_key=${uploadID}`);
+    context.response.body = result;
+    // const {title, tron_address, trx_amount} = await mysqlClient.execute(`SELECT title, tron_address, trx_amount FROM uploads WHERE upload_key=${uploadID}`);
+    // context.render(`${Deno.cwd()}/views/pages/payment_page.ejs`, {
+    //   githubID: githubID,
+    //   uploadID: uploadID,
+    //   title: title,
+    //   tron_address: tron_address,
+    //   trx_amount: trx_amount,
+    // });
   });
 
 
