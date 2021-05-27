@@ -140,9 +140,8 @@ router
     //
     if (result["rows"].length === 0) {
       context.response.body = "404 Product is not found"
-    } else {
-    context.response.body = result["rows"];
     } 
+    context.response.body = result["rows"];
     // context.response.body = result["rows"].length;
     // const {title, tron_address, trx_amount} = await mysqlClient.execute(`SELECT title, tron_address, trx_amount FROM uploads WHERE upload_key=${uploadID}`);
     // context.render(`${Deno.cwd()}/views/pages/payment_page.ejs`, {
