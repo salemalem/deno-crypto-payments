@@ -1,7 +1,7 @@
 1. Set up your page just like Ghost blog.
 2. Sell your digital goodies and accept crypto instantly
 
-Powered by Deno JS.
+Open Source startup powered by Deno JS.
 
 ### How to run using deno run
 ```shell
