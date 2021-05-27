@@ -16,3 +16,13 @@
 .seller-introduction {
   margin-left: 10%;
 }
+
+button.purchaseProduct {
+  margin-right: 5%;
+  margin-bottom: 5%;
+  background: #000;
+  text-decoration: none; 
+  color: #555; 
+  font-weight: bold;
+  cursor: pointer;
+}
