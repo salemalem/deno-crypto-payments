@@ -5,3 +5,7 @@ div.payment-div {
   border: 3px solid green;
   padding: 10px;
 }
+
+div.payment-step-2 {
+  visibility: hidden;
+}

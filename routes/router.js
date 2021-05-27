@@ -152,8 +152,15 @@ router
       });
     }
   })
-  .post("/tools/checkhash", async (context) => {
-    context.response.body = "test";
+  .get("/tools/checkhash/:hash", async (context) => {
+    const { hash } = helpers.getQuery(context, { mergeParams: true });
+    const jsonResult = fetch(`https://apilist.tronscan.org/api/transaction-info?hash=${hash}`);
+
+    jsonResult.then((response) => {
+      return response.json();
+    }).then((jsonData) => {
+      console.log(jsonData);
+    });
   });
 
 

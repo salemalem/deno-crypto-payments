@@ -4,8 +4,9 @@
     "pages/payment_page.css",
   ],
   js_files: [
-    "/scripts/payment_page.js"
-  ]
+    "/scripts/payment_page.js",
+    "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js",
+  ],
 }) %>
 
 <div class="payment-div">
@@ -15,10 +16,13 @@
   Is the address correct? <input type="button" value="Yes, it's correct" onclick="proceedPayment()">
   <div class="info">In case if your address isn't correct please reload this page.</div> <br><br>
 
-  <h3>Step 2:</h3>
-  Send <%= trx_amount %> to <%= tron_address %> <br>
-  Then, paste the transaction hash below <br>
-  <input type="text" name="transaction-hash" id="transaction-hash">
+  <div class="payment-step-2">
+    <h3>Step 2:</h3>
+    Send <%= trx_amount %> to <%= tron_address %> <br>
+    Then, paste the transaction hash below <br>
+    <input type="text" name="transaction-hash" id="transaction-hash">
+    <input type="button" value="Check hash" onclick="checkHash()">
+  </div>
 </div>
 
 <%- include("../partials/foot.ejs") %>

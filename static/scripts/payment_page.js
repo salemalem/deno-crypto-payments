@@ -1,5 +1,9 @@
+let userTronAddress;
+
 function proceedPayment() {
   let userTronAddressSelector = document.querySelector("#user-tron-address");
-  let userTronAddress = userTronAddressSelector.value;
+  userTronAddress = userTronAddressSelector.value;
   userTronAddressSelector.disabled = true;
+  document.querySelector(".payment-step-2").style.visibility = "visible";
 }
+
