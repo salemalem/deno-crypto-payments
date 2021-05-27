@@ -141,17 +141,15 @@ router
     if (result["rows"].length === 0) {
       context.response.body = "404 Product is not found"
     } else {
-      const result = await mysqlClient.execute(`SELECT title, tron_address, trx_amount FROM uploads WHERE upload_key=${uploadID}`);
-      console.log(result);
-    // const {title, tron_address, trx_amount} = await mysqlClient.execute(`SELECT title, tron_address, trx_amount FROM uploads WHERE upload_key=${uploadID}`);
-    // context.render(`${Deno.cwd()}/views/pages/payment_page.ejs`, {
-    //   githubID: githubID,
-    //   uploadID: uploadID,
-    //   title: title,
-    //   tron_address: tron_address,
-    //   trx_amount: trx_amount,
-    // });
-      context.response.body = result["rows"];
+      const { rows } = await mysqlClient.execute(`SELECT title, tron_address, trx_amount FROM uploads WHERE upload_key=${uploadID}`);
+      console.log(rows);
+      context.render(`${Deno.cwd()}/views/pages/payment_page.ejs`, {
+        githubID: githubID,
+        uploadID: uploadID,
+        title: rows["title"],
+        tron_address: rows["tron_address"],
+        trx_amount: rows["trx_amount"],
+      });
     }
   });
 
