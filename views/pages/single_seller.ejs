@@ -15,10 +15,20 @@
 <div class="archive">
   <% for(let i=0; i<uploads.length; i++) {%>
     <article class="article" id="<%= uploads[i].upload_key %>">
-      <h3><%= uploads[i].title %></h3> <br>
-      <%= uploads[i].description %> <br>
-      <%= uploads[i].trx_amount %> <br>
-      <button id="<%= uploads[i].upload_key %>" class="purchaseProduct" onclick="purchaseProduct(this.id)">Purchase NOW</button>
+      <ul>
+        <li>
+          <h3><%= uploads[i].title %></h3>
+        </li> <br>
+        <li>
+          <%= uploads[i].description %>
+        </li> <br>
+        <li>
+          <%= uploads[i].trx_amount %>
+        </li> <br>
+        <li>
+          <button id="<%= uploads[i].upload_key %>" class="purchaseProduct" onclick="purchaseProduct(this.id)">Purchase NOW</button>
+        </li>
+      </ul>
     </article>
   <% } %>
 </div>

@@ -11,6 +11,11 @@
   box-shadow:
     0 5px 10px #404040,
     0 20px 20px #282828;
+  text-align: left;
+}
+
+.article ul li{
+  margin: 0 0 3% 0;
 }
 
 .seller-introduction {
@@ -20,9 +25,9 @@
 button.purchaseProduct {
   margin-right: 5%;
   margin-bottom: 5%;
-  background: #000;
+  background: #1d211e;
   text-decoration: none; 
-  color: #555; 
+  color: #e8d5d5; 
   font-weight: bold;
   cursor: pointer;
 }
