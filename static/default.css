@@ -19,3 +19,7 @@ a:link {
 ul, li {
   list-style-type: none;
 }
+
+input[type=submit]{
+  color: #222222;
+}
