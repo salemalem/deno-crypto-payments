@@ -138,7 +138,7 @@ router
     const { githubID, uploadID } = helpers.getQuery(context, { mergeParams: true });
     const result = await mysqlClient.execute(`SELECT title, tron_address, trx_amount FROM uploads WHERE upload_key=${uploadID}`);
     //
-    if (result["rows"].length === 0) {
+    if (true) {
       context.response.body = "404 Product is not found"
     }
     // context.response.body = result["rows"];
