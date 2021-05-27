@@ -148,7 +148,7 @@ router
         title: rows[0]["title"],
         tron_address: rows[0]["tron_address"],
         trx_amount: rows[0]["trx_amount"],
-        sellerName: sellerName,
+        sellerName: sellerName[0]["name"],
       });
     }
   });
