@@ -16,7 +16,7 @@ function checkHash() {
     type: "GET",
     dataType: 'json',
     success: function (data) {
-        alert(data);
+        console.log(data);
     }
   });
 }
