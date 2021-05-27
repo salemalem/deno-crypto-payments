@@ -23,8 +23,6 @@ const oauth2Client = new OAuth2Client({
   },
 });
 
-let filePath;
-
 const router = new Router();
 
 router
@@ -110,13 +108,14 @@ router
     context.response.redirect("/get-started");
   })
   .get("/download_file", async (context) => {
-    let filePathForUrl = filePath.split('static/');
-    console.log(filePathForUrl);
-    context.response.redirect(filePathForUrl[1]);
+    context.response.body = "download";
+    // let filePathForUrl = filePath.split('static/');
+    // console.log(filePathForUrl);
+    // context.response.redirect(filePathForUrl[1]);
   })
   .get("/sellers", async (context) => {
-    const {users: sellers} = await mysqlClient.execute(`SELECT githubID, name FROM users`);
-    context.response.body = sellers;
+    const {rows} = await mysqlClient.execute(`SELECT githubID, name FROM users`);
+    context.response.body = rows;
   })
   .get("/seller/:githubID", async (context) => {
     const { githubID } = helpers.getQuery(context, { mergeParams: true });
@@ -142,13 +141,14 @@ router
       context.response.body = "404 Product is not found"
     } else {
       const { rows } = await mysqlClient.execute(`SELECT title, tron_address, trx_amount FROM uploads WHERE upload_key=${uploadID}`);
-      console.log(rows);
+      const {rows: sellerName} = await mysqlClient.execute(`SELECT name FROM users WHERE githubID=${githubID}`);
       context.render(`${Deno.cwd()}/views/pages/payment_page.ejs`, {
         githubID: githubID,
         uploadID: uploadID,
         title: rows[0]["title"],
         tron_address: rows[0]["tron_address"],
         trx_amount: rows[0]["trx_amount"],
+        sellerName: sellerName,
       });
     }
   });
