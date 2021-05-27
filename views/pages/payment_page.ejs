@@ -13,10 +13,12 @@
   In order to proceed enter the address which you will use to send tokens.
   <input type="text" name="user-tron-address" id="user-tron-address"> <br>
   Is the address correct? <input type="button" value="Yes, it's correct" onclick="proceedPayment()">
-  <div class="info">In case if your address isn't correct please reload this page.</div>
-</div>
+  <div class="info">In case if your address isn't correct please reload this page.</div> <br><br>
 
-<%= tron_address %> 
-<%= trx_amount %> 
+  <h3>Step 2:</h3>
+  Send <%= trx_amount %> to <%= tron_address %> <br>
+  Then, paste the transaction hash below <br>
+  <input type="text" name="transaction-hash" id="transaction-hash">
+</div>
 
 <%- include("../partials/foot.ejs") %>
