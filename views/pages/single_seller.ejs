@@ -15,7 +15,7 @@
 <div class="archive">
   <% for(let i=0; i<uploads.length; i++) {%>
     <article class="article" id="<%= uploads[i].upload_key %>">
-      <%= uploads[i].title %> <br>
+      <h3><%= uploads[i].title %></h3> <br>
       <%= uploads[i].description %> <br>
       <%= uploads[i].trx_amount %> <br>
       <button id="<%= uploads[i].upload_key %>" class="purchaseProduct" onclick="purchaseProduct(this.id)">Purchase NOW</button>
