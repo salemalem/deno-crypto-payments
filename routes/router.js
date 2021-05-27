@@ -146,9 +146,9 @@ router
       context.render(`${Deno.cwd()}/views/pages/payment_page.ejs`, {
         githubID: githubID,
         uploadID: uploadID,
-        title: rows["title"],
-        tron_address: rows["tron_address"],
-        trx_amount: rows["trx_amount"],
+        title: rows[0]["title"],
+        tron_address: rows[0]["tron_address"],
+        trx_amount: rows[0]["trx_amount"],
       });
     }
   });
