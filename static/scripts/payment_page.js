@@ -1,4 +1,5 @@
 function proceedPayment() {
-  let userTronAddress = document.querySelector("#user-tron-address").value;
-  console.log(userTronAddress);
+  let userTronAddressSelector = document.querySelector("#user-tron-address");
+  let userTronAddress = userTronAddressSelector.value;
+  userTronAddressSelector.disabled = true;
 }
