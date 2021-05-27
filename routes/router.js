@@ -153,7 +153,7 @@ router
     }
   })
   .post("/tools/checkhash", async (context) {
-    
+    context.response.body = "test";
   });
 
 
