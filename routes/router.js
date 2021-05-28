@@ -185,7 +185,7 @@ router
           console.log(jsonData["confirmed"]);
           console.log(jsonData["contractRet"]);
           
-          jsonBodyOutput["status"]       = "new";
+          jsonBodyOutput.status       = "new";
           jsonBodyOutput["contractData"] = jsonData["contractData"];
           jsonBodyOutput["confirmed"]    = jsonData["confirmed"];
           jsonBodyOutput["contractRet"]  = jsonData["contractRet"];
