@@ -168,7 +168,7 @@ router
 
     let {rows: payments}  = await mysqlClient.execute(`SELECT * FROM payments WHERE transactionHash='${hash}'`);
     console.log(payments);
-    let jsonBodyOutput = {
+    var jsonBodyOutput = {
       status: "unknown",
       contractData: "unknown",
       confirmed: "unknown",
