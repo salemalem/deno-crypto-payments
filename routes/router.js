@@ -27,8 +27,6 @@ const oauth2Client = new OAuth2Client({
 
 const router = new Router();
 
-let jsonBodyOutput = {};
-
 router
   .get("/get-started", async (context) => {
     context.render(`${Deno.cwd()}/views/get_started.ejs`, {
@@ -170,6 +168,7 @@ router
 
     let {rows: payments}  = await mysqlClient.execute(`SELECT * FROM payments WHERE transactionHash='${hash}'`);
     console.log(payments);
+    let jsonBodyOutput = {};
     if(!payments.length) { // if no payment with this hash was made
       const jsonResult = fetch(`https://apilist.tronscan.org/api/transaction-info?hash=${hash}`);
 
@@ -180,23 +179,19 @@ router
           console.log(jsonData["contractData"]);
           console.log(jsonData["confirmed"]);
           console.log(jsonData["contractRet"]);
-          jsonBodyOutput = {
-            status: "new",
-            contractData: jsonData["contractData"],
-            confirmed: jsonData["confirmed"],
-            contractRet: jsonData["contractRet"],
-          };
+          
+          jsonBodyOutput["status"]       = "new";
+          jsonBodyOutput["contractData"] = jsonData["contractData"];
+          jsonBodyOutput["confirmed"]    = jsonData["confirmed"];
+          jsonBodyOutput["contractRet"]  = jsonData["contractRet"];
+
           console.log(jsonBodyOutput);
         } else {
-          jsonBodyOutput = {
-            status: "404"
-          };
+          jsonBodyOutput["status"] = "404";
         }
       });
     } else {
-      jsonBodyOutput = {
-        status: "already paid before"
-      };
+      jsonBodyOutput["status"] = "already paid before";
     }
 
     context.response.body = JSON.stringify(jsonBodyOutput);
