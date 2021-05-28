@@ -173,6 +173,7 @@ router
       jsonResult.then((response) => {
         return response.json();
       }).then((jsonData) => {
+        console.log(jsonData);
         if (jsonData.length) {
           console.log(jsonData["contractData"]);
           console.log(jsonData["confirmed"]);
