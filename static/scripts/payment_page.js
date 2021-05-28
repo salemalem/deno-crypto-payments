@@ -16,7 +16,7 @@ function checkHash() {
   let hashInput = document.querySelector("#transaction-hash");
   transactionHash = hashInput.value;
   $.ajax({
-    url: `/tools/checkHash/${transactionHash}`,
+    url: `/tools/checkhash/${transactionHash}`,
     type: "GET",
     dataType: 'json',
     success: function (data) {
