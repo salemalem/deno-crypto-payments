@@ -9,6 +9,8 @@ import { mysqlClient } from "../database.js";
 
 import { ensureDir } from "../dependencies.js";
 
+import { isEmpty } from "../utils/isEmptyFunction.js"
+
 const GITHUB_OAUTH_CLIENT_ID     = Deno.env.toObject().GITHUB_OAUTH_CLIENT_ID;
 const GITHUB_OAUTH_CLIENT_SECRET = Deno.env.toObject().GITHUB_OAUTH_CLIENT_SECRET;
 
@@ -24,16 +26,6 @@ const oauth2Client = new OAuth2Client({
 });
 
 const router = new Router();
-
-function isEmpty(obj) {
-  for(var prop in obj) {
-    if(obj.hasOwnProperty(prop)) {
-      return false;
-    }
-  }
-
-  return JSON.stringify(obj) === JSON.stringify({});
-}
 
 let jsonBodyOutput = 'if you see this, then something went wrong';
 
