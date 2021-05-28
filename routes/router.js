@@ -161,8 +161,8 @@ router
     }).then((jsonData) => {
       console.log(jsonData["contractData"]);
       console.log(jsonData["confirmed"]);
-      context.response.body = "hi";
     });
+    context.response.body = "hi";
   });
 
 
