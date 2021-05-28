@@ -193,6 +193,7 @@ router
             confirmed: jsonData["confirmed"],
             contractRet: jsonData["contractRet"],
           };
+          console.log(jsonBodyOutput);
         } else {
           jsonBodyOutput = {
             status: "404"
