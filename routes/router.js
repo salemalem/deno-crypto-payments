@@ -27,7 +27,7 @@ const oauth2Client = new OAuth2Client({
 
 const router = new Router();
 
-let jsonBodyOutput = 'if you see this, then something went wrong';
+let jsonBodyOutput = {};
 
 router
   .get("/get-started", async (context) => {
