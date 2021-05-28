@@ -35,6 +35,15 @@ router
     context.response.redirect(
       oauth2Client.code.getAuthorizationUri(),
     );
+    await client.execute(`
+    CREATE TABLE users (
+        id int(11) NOT NULL AUTO_INCREMENT,
+        name varchar(100) NOT NULL,
+        created_at timestamp not null default current_timestamp,
+        githubID varchar(100) NOT NULL,
+        PRIMARY KEY (id)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+`);
   })
   .get("/oauth2/callback", async (context) => {
     // Exchange the authorization code for an access token
