@@ -164,8 +164,8 @@ router
   .get("/tools/checkhash/:hash", async (context) => {
     const { hash } = helpers.getQuery(context, { mergeParams: true });
 
-    let {rows: payments}  = await mysqlClient.execute(`SELECT * FROM payments WHERE transactionHash='${hash}'`);
-    console.log(result);
+    let {rows}  = await mysqlClient.execute(`SELECT * FROM payments WHERE transactionHash='${hash}'`);
+    console.log(rows);
     // let jsonBodyOutput;
     // if(!payments.length) { // if no payment with this hash was made
     //   const jsonResult = fetch(`https://apilist.tronscan.org/api/transaction-info?hash=${hash}`);
