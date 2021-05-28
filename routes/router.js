@@ -166,22 +166,22 @@ router
 
     let {rows}  = await mysqlClient.execute(`SELECT * FROM payments WHERE transactionHash='${hash}'`);
     console.log(rows);
-    // let jsonBodyOutput;
-    // if(!payments.length) { // if no payment with this hash was made
-    //   const jsonResult = fetch(`https://apilist.tronscan.org/api/transaction-info?hash=${hash}`);
+    let jsonBodyOutput;
+    if(!payments.length) { // if no payment with this hash was made
+      const jsonResult = fetch(`https://apilist.tronscan.org/api/transaction-info?hash=${hash}`);
 
-    //   jsonResult.then((response) => {
-    //     return response.json();
-    //   }).then((jsonData) => {s
-    //     if (jsonData.length) {
-    //       console.log(jsonData["contractData"]);
-    //       console.log(jsonData["confirmed"]);
-    //       console.log(jsonData["contractRet"]);
-    //     } else {
-    //       console.log("empty");
-    //     }
-    //   });
-    // }
+      jsonResult.then((response) => {
+        return response.json();
+      }).then((jsonData) => {s
+        if (jsonData.length) {
+          console.log(jsonData["contractData"]);
+          console.log(jsonData["confirmed"]);
+          console.log(jsonData["contractRet"]);
+        } else {
+          console.log("incorrect hash");
+        }
+      });
+    }
 
     context.response.body = "hi";
   })
