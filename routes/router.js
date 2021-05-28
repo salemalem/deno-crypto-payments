@@ -191,15 +191,18 @@ router
           jsonBodyOutput["contractRet"]  = jsonData["contractRet"];
 
           console.log(jsonBodyOutput);
+          context.response.body = JSON.stringify(jsonBodyOutput);
         } else {
           jsonBodyOutput["status"] = "404";
+          context.response.body = JSON.stringify(jsonBodyOutput);
         }
       });
     } else {
       jsonBodyOutput["status"] = "already paid before";
+      context.response.body = JSON.stringify(jsonBodyOutput);
     }
 
-    context.response.body = JSON.stringify(jsonBodyOutput);
+    // context.response.body = JSON.stringify(jsonBodyOutput);
   })
   .get("/createTable", async (context) => {
     await mysqlClient.execute(`DROP TABLE IF EXISTS payments`);
