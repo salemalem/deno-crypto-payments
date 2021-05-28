@@ -25,6 +25,16 @@ const oauth2Client = new OAuth2Client({
 
 const router = new Router();
 
+function isEmpty(obj) {
+  for(var prop in obj) {
+    if(obj.hasOwnProperty(prop)) {
+      return false;
+    }
+  }
+
+  return JSON.stringify(obj) === JSON.stringify({});
+}
+
 router
   .get("/get-started", async (context) => {
     context.render(`${Deno.cwd()}/views/get_started.ejs`, {
@@ -174,13 +184,15 @@ router
         return response.json();
       }).then((jsonData) => {
         console.log(jsonData);
-        if (jsonData.length) {
-          console.log(jsonData["contractData"]);
-          console.log(jsonData["confirmed"]);
-          console.log(jsonData["contractRet"]);
-        } else {
-          console.log("incorrect hash");
-        }
+        console.log(isEmpty(jsonData));
+        console.log(!isEmpty(jsonData));
+        // if (!isEmpty(jsonData)) {
+        //   console.log(jsonData["contractData"]);
+        //   console.log(jsonData["confirmed"]);
+        //   console.log(jsonData["contractRet"]);
+        // } else {
+        //   console.log("incorrect hash");
+        // }
       });
     }
 
