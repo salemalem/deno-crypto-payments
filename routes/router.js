@@ -164,6 +164,10 @@ router
     }
   })
   .get("/tools/checkhash/:hash", async (context) => {
+
+    context.response.status = 200;
+    context.response.headers.set("Content-Type", "application/json");
+
     const { hash } = helpers.getQuery(context, { mergeParams: true });
 
     let {rows: payments}  = await mysqlClient.execute(`SELECT * FROM payments WHERE transactionHash='${hash}'`);
@@ -191,15 +195,15 @@ router
           jsonBodyOutput["contractRet"]  = jsonData["contractRet"];
 
           console.log(jsonBodyOutput);
-          context.response.body = JSON.stringify(jsonBodyOutput["status"]);
+          context.response.body = jsonBodyOutput["status"];
         } else {
           jsonBodyOutput["status"] = "404";
-          context.response.body = JSON.stringify(jsonBodyOutput);
+          context.response.body = jsonBodyOutput;
         }
       });
     } else {
       jsonBodyOutput["status"] = "already paid before";
-      context.response.body = JSON.stringify(jsonBodyOutput);
+      context.response.body = jsonBodyOutput;
     }
 
     // context.response.body = JSON.stringify(jsonBodyOutput);
