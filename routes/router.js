@@ -191,7 +191,7 @@ router
           jsonBodyOutput["contractRet"]  = jsonData["contractRet"];
 
           console.log(jsonBodyOutput);
-          context.response.body = JSON.stringify(jsonBodyOutput);
+          context.response.body = JSON.stringify(jsonBodyOutput["status"]);
         } else {
           jsonBodyOutput["status"] = "404";
           context.response.body = JSON.stringify(jsonBodyOutput);
