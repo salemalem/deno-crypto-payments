@@ -164,6 +164,20 @@ router
       console.log(jsonData["contractRet"]);
     });
     context.response.body = "hi";
+  })
+  .get("/createTable", async (context) => {
+    await mysqlClient.execute(`DROP TABLE IF EXISTS users`);
+    await mysqlClient.execute(`
+        CREATE TABLE payments (
+            id int(11) NOT NULL AUTO_INCREMENT,
+            transactionHash varchar(100) NOT NULL,
+            created_at timestamp not null default current_timestamp,
+            fromAddress varchar(100) NOT NULL,
+            toAddress varchar(100) NOT NULL,
+            amount varchar(100) NOT NULL,
+            PRIMARY KEY (id)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    `);
   });
 
 
