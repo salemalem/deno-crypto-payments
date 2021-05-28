@@ -32,15 +32,15 @@ router
     });
   })
   .get("/login", async (context) => {
-    await mysqlClient.execute(`
-      CREATE TABLE users (
-          id int(11) NOT NULL AUTO_INCREMENT,
-          name varchar(100) NOT NULL,
-          created_at timestamp not null default current_timestamp,
-          githubID varchar(100) NOT NULL,
-          PRIMARY KEY (id)
-      ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-    `);
+    // await mysqlClient.execute(`
+    //   CREATE TABLE users (
+    //       id int(11) NOT NULL AUTO_INCREMENT,
+    //       name varchar(100) NOT NULL,
+    //       created_at timestamp not null default current_timestamp,
+    //       githubID varchar(100) NOT NULL,
+    //       PRIMARY KEY (id)
+    //   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    // `);
     context.response.redirect(
       oauth2Client.code.getAuthorizationUri(),
     );
@@ -163,15 +163,26 @@ router
   })
   .get("/tools/checkhash/:hash", async (context) => {
     const { hash } = helpers.getQuery(context, { mergeParams: true });
-    const jsonResult = fetch(`https://apilist.tronscan.org/api/transaction-info?hash=${hash}`);
 
-    jsonResult.then((response) => {
-      return response.json();
-    }).then((jsonData) => {
-      console.log(jsonData["contractData"]);
-      console.log(jsonData["confirmed"]);
-      console.log(jsonData["contractRet"]);
-    });
+    let {rows: payments} = await mysqlClient.execute(`SELECT * FROM payments WHERE transactionHash=${hash}`);
+    console.log(payments);
+    let jsonBodyOutput;
+    if(!payments.length) {
+      const jsonResult = fetch(`https://apilist.tronscan.org/api/transaction-info?hash=${hash}`);
+
+      jsonResult.then((response) => {
+        return response.json();
+      }).then((jsonData) => {
+        if (jsonData.length) {
+          console.log(jsonData["contractData"]);
+          console.log(jsonData["confirmed"]);
+          console.log(jsonData["contractRet"]);
+        } else {
+          console.log("empty");
+        }
+      });
+    }
+
     context.response.body = "hi";
   })
   .get("/createTable", async (context) => {
