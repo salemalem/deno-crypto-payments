@@ -169,7 +169,7 @@ router
     await mysqlClient.execute(`DROP TABLE IF EXISTS users`);
     await mysqlClient.execute(`
         CREATE TABLE payments (
-            id int(11) NOT NULL AUTO_INCREMENT,
+            id int(11) unsigned NOT NULL AUTO_INCREMENT,
             transactionHash varchar(100) NOT NULL,
             created_at timestamp not null default current_timestamp,
             fromAddress varchar(100) NOT NULL,
