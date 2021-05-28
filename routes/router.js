@@ -160,6 +160,7 @@ router
       return response.json();
     }).then((jsonData) => {
       console.log(jsonData);
+      context.response.body = jsonData;
     });
   });
 

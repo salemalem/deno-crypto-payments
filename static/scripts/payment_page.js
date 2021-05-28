@@ -1,6 +1,7 @@
 let userTronAddress;
 let transactionHash;
 let transactionData;
+let status;
 
 function proceedPayment() {
   let userTronAddressSelector = document.querySelector("#user-tron-address");
@@ -15,11 +16,13 @@ function checkHash() {
   let hashInput = document.querySelector("#transaction-hash");
   transactionHash = hashInput.value;
   $.ajax({
-    url: `https://apilist.tronscan.org/api/transaction-info?hash=${transactionHash}`,
+    url: `../../../../tools/checkHash/${transactionHash}`,
     type: "GET",
     dataType: 'json',
     success: function (data) {
-        transactionData = data["contractData"];
+      // status = data["status"];
+      console.log(data);
+        // transactionData = data["contractData"];
     }
   });
   // 1 / 1million = amount 1
