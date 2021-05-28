@@ -183,16 +183,13 @@ router
       jsonResult.then((response) => {
         return response.json();
       }).then((jsonData) => {
-        console.log(jsonData);
-        console.log(isEmpty(jsonData));
-        console.log(!isEmpty(jsonData));
-        // if (!isEmpty(jsonData)) {
-        //   console.log(jsonData["contractData"]);
-        //   console.log(jsonData["confirmed"]);
-        //   console.log(jsonData["contractRet"]);
-        // } else {
-        //   console.log("incorrect hash");
-        // }
+        if (isEmpty(jsonData)) {
+          console.log(jsonData["contractData"]);
+          console.log(jsonData["confirmed"]);
+          console.log(jsonData["contractRet"]);
+        } else {
+          console.log("incorrect hash");
+        }
       });
     }
 
