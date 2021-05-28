@@ -183,7 +183,7 @@ router
       jsonResult.then((response) => {
         return response.json();
       }).then((jsonData) => {
-        if (isEmpty(jsonData)) {
+        if (!isEmpty(jsonData)) {
           console.log(jsonData["contractData"]);
           console.log(jsonData["confirmed"]);
           console.log(jsonData["contractRet"]);
