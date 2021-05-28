@@ -159,8 +159,9 @@ router
     jsonResult.then((response) => {
       return response.json();
     }).then((jsonData) => {
-      console.log(jsonData);
-      context.response.body = jsonData["contractData"];
+      console.log(jsonData["contractData"]);
+      console.log(jsonData["confirmed"]);
+      // context.response.body = jsonData["contractData"];
     });
   });
 
