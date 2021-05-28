@@ -168,7 +168,12 @@ router
 
     let {rows: payments}  = await mysqlClient.execute(`SELECT * FROM payments WHERE transactionHash='${hash}'`);
     console.log(payments);
-    let jsonBodyOutput = {};
+    let jsonBodyOutput = {
+      status: "unknown",
+      contractData: "unknown",
+      confirmed: "unknown",
+      contractRet: "unknown",
+    };
     if(!payments.length) { // if no payment with this hash was made
       const jsonResult = fetch(`https://apilist.tronscan.org/api/transaction-info?hash=${hash}`);
 
