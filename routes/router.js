@@ -166,7 +166,7 @@ router
     context.response.body = "hi";
   })
   .get("/createTable", async (context) => {
-    await mysqlClient.execute(`DROP TABLE IF EXISTS users`);
+    await mysqlClient.execute(`DROP TABLE IF EXISTS payments`);
     await mysqlClient.execute(`
         CREATE TABLE payments (
             id int(11) unsigned NOT NULL AUTO_INCREMENT,
