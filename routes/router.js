@@ -35,6 +35,8 @@ function isEmpty(obj) {
   return JSON.stringify(obj) === JSON.stringify({});
 }
 
+let jsonBodyOutput = 'if you see this, then something went wrong';
+
 router
   .get("/get-started", async (context) => {
     context.render(`${Deno.cwd()}/views/get_started.ejs`, {
@@ -176,7 +178,6 @@ router
 
     let {rows: payments}  = await mysqlClient.execute(`SELECT * FROM payments WHERE transactionHash='${hash}'`);
     console.log(payments);
-    let jsonBodyOutput = 'if you see this, then something went wrong';
     if(!payments.length) { // if no payment with this hash was made
       const jsonResult = fetch(`https://apilist.tronscan.org/api/transaction-info?hash=${hash}`);
 
