@@ -187,13 +187,25 @@ router
           console.log(jsonData["contractData"]);
           console.log(jsonData["confirmed"]);
           console.log(jsonData["contractRet"]);
+          jsonBodyOutput = {
+            status: "new",
+            contractData: jsonData["contractData"],
+            confirmed: jsonData["confirmed"],
+            contractRet: jsonData["contractRet"],
+          };
         } else {
-          console.log("incorrect hash");
+          jsonBodyOutput = {
+            status: "404"
+          };
         }
       });
+    } else {
+      jsonBodyOutput = {
+        status: "already paid before"
+      }
     }
 
-    context.response.body = "hi";
+    context.response.body = jsonBodyOutput;
   })
   .get("/createTable", async (context) => {
     await mysqlClient.execute(`DROP TABLE IF EXISTS payments`);
