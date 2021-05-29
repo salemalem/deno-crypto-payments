@@ -166,6 +166,15 @@ router
   .get("/tools/checkhash/:hash", async (context) => {
     const { hash } = helpers.getQuery(context, { mergeParams: true });
 
+    context.response.body = JSON.stringify({
+      status: "new",
+      fromAddress: "Dave",
+      toAddress: "Mike",
+      amount: 1,
+      confirmed: "true",
+      contractRet: "SUCCESS",
+    });
+    
     let {rows: payments}  = await mysqlClient.execute(`SELECT * FROM payments WHERE transactionHash='${hash}'`);
     console.log(payments);
     if(!payments.length) { // if no payment with this hash was made
@@ -186,14 +195,6 @@ router
             // confirmed    : JSON.stringify(jsonData["confirmed"]),
             // contractRet  : jsonData["contractRet"],
           // };
-          context.response.body = JSON.stringify({
-            status: "new",
-            fromAddress: "Dave",
-            toAddress: "Mike",
-            amount: 1,
-            confirmed: "true",
-            contractRet: "SUCCESS",
-          });
         } else {
           jsonBodyOutput["status"] = "404";
           // context.response.body = jsonBodyOutput;
