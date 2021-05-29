@@ -171,13 +171,13 @@ router
     if(!payments.length) { // if no payment with this hash was made
       const jsonResult = fetch(`https://apilist.tronscan.org/api/transaction-info?hash=${hash}`);
 
-      jsonResult.then((response) => {
-        return response.json();
+      jsonResult.then((rawResponse) => {
+        return rawResponse.json();
       }).then((jsonData) => {
         if (!isEmpty(jsonData)) {
-          console.log(jsonData["contractData"]);
-          console.log(jsonData["confirmed"]);
-          console.log(jsonData["contractRet"]);
+          // console.log(jsonData["contractData"]);
+          // console.log(jsonData["confirmed"]);
+          // console.log(jsonData["contractRet"]);
           
           // console.log(jsonBodyOutput);
           // context.response.body = {
