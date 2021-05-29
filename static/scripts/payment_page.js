@@ -26,11 +26,16 @@ function checkHash() {
           type: "GET",
           dataType: 'json',
           success: function (hashDataInTRONscan) {
-              console.log(hashDataInTRONscan);
+              transactionData = {
+                contractData: hashDataInTRONscan["contractData"],
+                confirmed: hashDataInTRONscan["confirmed"],
+                contractRet: hashDataInTRONscan["contractRet"],
+              };
           }
         });
       }
     }
   });
   // 1 / 1million = amount 1
+  console.log(transactionData);
 }
