@@ -14,9 +14,9 @@
   In order to proceed enter the address which you will use to send tokens.
   <input type="text" name="user-tron-address" id="user-tron-address"> <br>
   <input type="hidden" name="upload-id" id="upload-id" value="<%= uploadID %>">
-  <input type="hidden" name="github-id" id="github-id">
-  <input type="hidden" name="product-title" id="product-title">
-  <input type="hidden" name="seller-name" id="seller-name">
+  <input type="hidden" name="github-id" id="github-id" value="<%= githubID %>">
+  <input type="hidden" name="product-title" id="product-title" value="<%= title %>">
+  <input type="hidden" name="seller-name" id="seller-name" value="<%= sellerName %>">
   Is the address correct? <input type="button" value="Yes, it's correct" onclick="proceedPayment()">
   <div class="info">In case if your address isn't correct please reload this page.</div> <br><br>
 
@@ -25,8 +25,8 @@
     Send <%= trx_amount %> to <%= tron_address %> <br>
     Then, paste the transaction hash below <br>
     <input type="text" name="transaction-hash" id="transaction-hash">
-    <input type="hidden" name="seller-tron-address" id="seller-tron-address">
-    <input type="hidden" name="trx-amount" id="trx-amount">
+    <input type="hidden" name="seller-tron-address" id="seller-tron-address" value="<%= tron_address %>">
+    <input type="hidden" name="trx-amount" id="trx-amount" value="<%= trx_amount %>">
     <input type="button" value="Check hash" onclick="checkHash()">
   </div>
 </div>
