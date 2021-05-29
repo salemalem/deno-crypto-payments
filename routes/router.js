@@ -179,14 +179,13 @@ router
           console.log(jsonData["confirmed"]);
           console.log(jsonData["contractRet"]);
           
-          let jsonBodyOutput = {}
-          jsonBodyOutput.status       = "new";
-          jsonBodyOutput["contractData"] = jsonData["contractData"];
-          jsonBodyOutput["confirmed"]    = jsonData["confirmed"];
-          jsonBodyOutput["contractRet"]  = jsonData["contractRet"];
-
           // console.log(jsonBodyOutput);
-          context.response.body = jsonBodyOutput;
+          context.response.body = {
+            status       : "new",
+            contractData : jsonData["contractData"],
+            confirmed    : jsonData["confirmed"],
+            contractRet  : jsonData["contractRet"],
+          };
         } else {
           jsonBodyOutput["status"] = "404";
           // context.response.body = jsonBodyOutput;
