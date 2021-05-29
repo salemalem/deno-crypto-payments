@@ -164,9 +164,6 @@ router
     }
   })
   .get("/tools/checkhash/:hash", async (context) => {
-
-    context.response.type = "application/json";
-
     const { hash } = helpers.getQuery(context, { mergeParams: true });
 
     let {rows: payments}  = await mysqlClient.execute(`SELECT * FROM payments WHERE transactionHash='${hash}'`);
