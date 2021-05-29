@@ -18,14 +18,15 @@ function checkHash() {
   $.ajax({
     url: `/tools/checkhash/${transactionHash}`,
     type: "GET",
-    success: function (data) {
-      if (data === 0) {
+    success: function (hashDataInRecords) {
+      console.log(hashDataInRecords === 0);
+      if (hashDataInRecords === 0) {
         $.ajax({
           url: `https://apilist.tronscan.org/api/transaction-info?hash=${transactionHash}`,
           type: "GET",
           dataType: 'json',
-          success: function (data) {
-              console.log(data);
+          success: function (hashDataInTRONscan) {
+              console.log(hashDataInTRONscan);
           }
         });
       }
