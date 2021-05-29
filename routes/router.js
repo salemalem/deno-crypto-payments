@@ -183,7 +183,7 @@ router
           context.response.body = {
             status       : "new",
             // contractData : JSON.stringify(jsonData["contractData"]),
-            confirmed    : jsonData["confirmed"],
+            confirmed    : JSON.stringify(jsonData["confirmed"]),
             contractRet  : jsonData["contractRet"],
           };
         } else {
