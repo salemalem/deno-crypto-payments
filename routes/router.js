@@ -202,7 +202,7 @@ router
       // context.response.body = jsonBodyOutput;
     }
 
-    context.response.body = "wow";
+    context.response.body = { result: "value" };
   })
   .get("/createTable", async (context) => {
     await mysqlClient.execute(`DROP TABLE IF EXISTS payments`);
