@@ -165,8 +165,7 @@ router
   })
   .get("/tools/checkhash/:hash", async (context) => {
 
-    context.status = 200;
-    context.headers.set("Content-Type", "application/json");
+    context.response.type = "application/json";
 
     const { hash } = helpers.getQuery(context, { mergeParams: true });
 
@@ -195,7 +194,7 @@ router
           jsonBodyOutput["contractRet"]  = jsonData["contractRet"];
 
           console.log(jsonBodyOutput);
-          context.response.body = jsonBodyOutput;
+          context.response.body = jsonBodyOutput["status"];
         } else {
           jsonBodyOutput["status"] = "404";
           context.response.body = jsonBodyOutput;
