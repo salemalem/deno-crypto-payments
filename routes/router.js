@@ -186,14 +186,14 @@ router
             // confirmed    : JSON.stringify(jsonData["confirmed"]),
             // contractRet  : jsonData["contractRet"],
           // };
-          context.response.body = {
+          context.response.body = JSON.stringify({
             status: "new",
             fromAddress: "Dave",
             toAddress: "Mike",
             amount: 1,
             confirmed: "true",
             contractRet: "SUCCESS",
-          }
+          });
         } else {
           jsonBodyOutput["status"] = "404";
           // context.response.body = jsonBodyOutput;
