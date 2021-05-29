@@ -19,7 +19,16 @@ function checkHash() {
     url: `/tools/checkhash/${transactionHash}`,
     type: "GET",
     success: function (data) {
-      console.log(data);
+      if (data === 0) {
+        $.ajax({
+          url: `https://apilist.tronscan.org/api/transaction-info?hash=${transactionHash}`,
+          type: "GET",
+          dataType: 'json',
+          success: function (data) {
+              console.log(data);
+          }
+        });
+      }
     }
   });
   // 1 / 1million = amount 1
