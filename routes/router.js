@@ -174,24 +174,19 @@ router
       jsonResult.then((response) => {
         return response.json();
       }).then((jsonData) => {
-        var jsonBodyOutput = {
-          status: "unknown",
-          contractData: "unknown",
-          confirmed: "unknown",
-          contractRet: "unknown",
-        };
         if (!isEmpty(jsonData)) {
           console.log(jsonData["contractData"]);
           console.log(jsonData["confirmed"]);
           console.log(jsonData["contractRet"]);
           
+          let jsonBodyOutput = {}
           jsonBodyOutput.status       = "new";
           jsonBodyOutput["contractData"] = jsonData["contractData"];
           jsonBodyOutput["confirmed"]    = jsonData["confirmed"];
           jsonBodyOutput["contractRet"]  = jsonData["contractRet"];
 
-          console.log(jsonBodyOutput);
-          // context.response.body = jsonBodyOutput["status"];
+          // console.log(jsonBodyOutput);
+          context.response.body = jsonBodyOutput;
         } else {
           jsonBodyOutput["status"] = "404";
           // context.response.body = jsonBodyOutput;
@@ -201,8 +196,6 @@ router
       jsonBodyOutput["status"] = "already paid before";
       // context.response.body = jsonBodyOutput;
     }
-
-    context.response.body = jsonBodyOutput;
   })
   .get("/createTable", async (context) => {
     await mysqlClient.execute(`DROP TABLE IF EXISTS payments`);
