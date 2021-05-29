@@ -18,11 +18,8 @@ function checkHash() {
   $.ajax({
     url: `/tools/checkhash/${transactionHash}`,
     type: "GET",
-    dataType: 'json',
     success: function (data) {
-      // status = data["status"];
       console.log(data);
-        // transactionData = data["contractData"];
     }
   });
   // 1 / 1million = amount 1
