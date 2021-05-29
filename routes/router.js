@@ -166,15 +166,15 @@ router
   .get("/tools/checkhash/:hash", async (context) => {
     const { hash } = helpers.getQuery(context, { mergeParams: true });
 
-    context.response.body = JSON.stringify({
+    context.response.body = {
       status: "new",
       fromAddress: "Dave",
       toAddress: "Mike",
       amount: 1,
       confirmed: "true",
       contractRet: "SUCCESS",
-    });
-    
+    };
+
     let {rows: payments}  = await mysqlClient.execute(`SELECT * FROM payments WHERE transactionHash='${hash}'`);
     console.log(payments);
     if(!payments.length) { // if no payment with this hash was made
