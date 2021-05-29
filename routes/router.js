@@ -166,17 +166,18 @@ router
   .get("/tools/checkhash/:hash", async (context) => {
     const { hash } = helpers.getQuery(context, { mergeParams: true });
 
-    context.response.body = {
-      status: "new",
-      fromAddress: "Dave",
-      toAddress: "Mike",
-      amount: 1,
-      confirmed: "true",
-      contractRet: "SUCCESS",
-    };
+    // context.response.body = {
+    //   status: "new",
+    //   fromAddress: "Dave",
+    //   toAddress: "Mike",
+    //   amount: 1,
+    //   confirmed: "true",
+    //   contractRet: "SUCCESS",
+    // };
 
     let {rows: payments}  = await mysqlClient.execute(`SELECT * FROM payments WHERE transactionHash='${hash}'`);
-    console.log(payments);
+    context.response.body = payments.length;
+    /*
     if(!payments.length) { // if no payment with this hash was made
       const jsonResult = fetch(`https://apilist.tronscan.org/api/transaction-info?hash=${hash}`);
 
@@ -204,6 +205,7 @@ router
       jsonBodyOutput["status"] = "already paid before";
       // context.response.body = jsonBodyOutput;
     }
+    */
   })
   .get("/createTable", async (context) => {
     await mysqlClient.execute(`DROP TABLE IF EXISTS payments`);
