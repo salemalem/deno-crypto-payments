@@ -182,7 +182,7 @@ router
           // console.log(jsonBodyOutput);
           context.response.body = {
             status       : "new",
-            contractData : jsonData["contractData"],
+            contractData : JSON.stringify(jsonData["contractData"]),
             confirmed    : jsonData["confirmed"],
             contractRet  : jsonData["contractRet"],
           };
