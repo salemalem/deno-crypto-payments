@@ -48,7 +48,6 @@ function checkHash() {
   console.log(transactionData);
   console.log(expectedData);
   let convertedFlatAmount = expectedData["trx-amount"] * 1000000;
-  console.log(convertedFlatAmount);
   if (
     transactionData["contractData"]["owner_address"] == userTronAddress
     && transactionData["contractData"]["to_address"] == expectedData["seller-tron-address"]
@@ -56,6 +55,18 @@ function checkHash() {
     && transactionData["confirmed"] == true
     && transactionData["contractRet"] == "SUCCESS"
   ) {
-    console.log("Successful transaction");
+    alert("Successful transaction");
+    $.ajax({
+      type: "POST",
+      url: `/tools/recordHash/${transactionHash}`,,
+      data: {
+        owner_address: userTronAddress,
+        to_address: expectedData["seller-tron-address"],
+        amount: convertedFlatAmount
+      },
+      success: function (result){
+        console.log(result);
+      }, 
+    });
   }
 }
