@@ -209,7 +209,8 @@ router
   })
   .get("/tools/recordHash/:hash", async (context) => {
     const { hash } = helpers.getQuery(context, { mergeParams: true });
-    console.log(context.request.serverRequest);
+    console.log(context.request);
+    context.response.body = "hi";
   })
   .get("/createTable", async (context) => {
     await mysqlClient.execute(`DROP TABLE IF EXISTS payments`);
