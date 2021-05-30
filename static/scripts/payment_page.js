@@ -47,7 +47,7 @@ function checkHash() {
   // 1 / 1million = amount 1
   console.log(transactionData);
   console.log(expectedData);
-  if (transactionData["contractData"]["ownerAddress"] == userTronAddress) {
+  if (transactionData["contractData"]["owner_address"] == userTronAddress) {
     console.log("Successful transaction");
   }
 }
