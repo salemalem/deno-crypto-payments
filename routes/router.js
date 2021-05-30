@@ -209,7 +209,7 @@ router
   })
   .post("/tools/recordHash/:hash", async (context) => {
     const { hash } = helpers.getQuery(context, { mergeParams: true });
-    console.log(context.request.body());
+    console.log(context.request.body().value);
     context.response.body = "hi";
   })
   .get("/createTable", async (context) => {
