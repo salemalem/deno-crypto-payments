@@ -58,7 +58,7 @@ function checkHash() {
     alert("Successful transaction");
     $.ajax({
       type: "POST",
-      url: `/tools/recordHash/${transactionHash}`,,
+      url: `/tools/recordHash/${transactionHash}`,
       data: {
         owner_address: userTronAddress,
         to_address: expectedData["seller-tron-address"],
