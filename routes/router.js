@@ -112,7 +112,7 @@ router
     // context.response.redirect("/");
   })
   .post("/login_test", async (context) => {
-    console.log(await context.request.body().value.read());
+    console.log(await context.request.body().value.read().fields);
     // const form = JSON.stringify(await multiParser(context.request.serverRequest));
     // const parse = JSON.parse(form);
     // console.log(parse["fields"]["username"]);
@@ -209,7 +209,8 @@ router
   })
   .post("/tools/recordHash/:hash", async (context) => {
     const { hash } = helpers.getQuery(context, { mergeParams: true });
-    console.log(await context.request.body().value.read());
+    let result = await context.request.body().value.read();
+    console.log(result.fields)
     context.response.body = "hi";
   })
   .get("/createTable", async (context) => {
