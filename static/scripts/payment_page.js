@@ -2,6 +2,7 @@ let userTronAddress;
 let transactionHash;
 let transactionData;
 let expectedData = {};
+let originalFileName;
 let status;
 
 function proceedPayment() {
@@ -10,6 +11,7 @@ function proceedPayment() {
   expectedData["github-id"] = document.querySelector("#github-id").value;
   expectedData["title"] = document.querySelector("#product-title").value;
   expectedData["seller-name"] = document.querySelector("#seller-name").value;
+  originalFileName = document.querySelector("#original-file-name").value;
   userTronAddress = userTronAddressSelector.value;
   userTronAddressSelector.disabled = true;
   document.querySelector(".payment-step-2").style.visibility = "visible";
@@ -60,7 +62,6 @@ function checkHash() {
       && transactionData["contractRet"] == "SUCCESS"
     ) {
       alert("Successful transaction");
-      let originalFileName;
       $.ajax({
         type: "POST",
         url: `/tools/recordHash/${transactionHash}`,
@@ -71,7 +72,7 @@ function checkHash() {
           "githubID": expectedData["github-id"],
         },
         success: function (result){
-          originalFileName = result;
+          console.log(result);
         }, 
       });
       // "https://deno-crypto-payments.herokuapp.com/uploads/example.md";

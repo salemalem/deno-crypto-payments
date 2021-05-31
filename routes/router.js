@@ -151,7 +151,7 @@ router
     if (result["rows"].length === 0) {
       context.response.body = "404 Product is not found"
     } else {
-      const { rows } = await mysqlClient.execute(`SELECT title, tron_address, trx_amount FROM uploads WHERE upload_key=${uploadID}`);
+      const { rows } = await mysqlClient.execute(`SELECT title, tron_address, trx_amount, original_file_name FROM uploads WHERE upload_key=${uploadID}`);
       const {rows: sellerName} = await mysqlClient.execute(`SELECT name FROM users WHERE githubID=${githubID}`);
       context.render(`${Deno.cwd()}/views/pages/payment_page.ejs`, {
         githubID: githubID,
@@ -160,6 +160,7 @@ router
         tron_address: rows[0]["tron_address"],
         trx_amount: rows[0]["trx_amount"],
         sellerName: sellerName[0]["name"],
+        original_file_name: rows[0]["original_file_name"],
       });
     }
   })
@@ -224,8 +225,7 @@ router
       transactionData["amount"],
     ]);
 
-    let {rows: originalFileNameRow}  = await mysqlClient.execute(`SELECT original_file_name FROM uploads`);
-    context.response.body = originalFileNameRow[0]["original_file_name"];
+    context.response.body = "success";
   })
   .get("/accessFile/:uploadID", async (context) => {
     const { uploadID } = helpers.getQuery(context, { mergeParams: true });
