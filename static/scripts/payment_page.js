@@ -76,7 +76,7 @@ function checkHash() {
         }, 
       });
       // "https://deno-crypto-payments.herokuapp.com/uploads/example.md";
-      saveAs("https://deno-crypto-payments.herokuapp.com/accessFile/4", originalFileName);
+      saveAs("https://deno-crypto-payments.herokuapp.com/accessFile/" + expectedData["upload-id"], originalFileName);
     }
   }
 }
