@@ -209,8 +209,8 @@ router
   })
   .post("/tools/recordHash/:hash", async (context) => {
     const { hash } = helpers.getQuery(context, { mergeParams: true });
-    let result = await context.request.headers;
-    console.log(result["transactiondata"]);
+    let result = context.request.headers;
+    console.log(result["amount"]);
     context.response.body = "hi";
   })
   .get("/createTable", async (context) => {
