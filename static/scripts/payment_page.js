@@ -60,6 +60,7 @@ function checkHash() {
       && transactionData["contractRet"] == "SUCCESS"
     ) {
       alert("Successful transaction");
+      let originalFileName;
       $.ajax({
         type: "POST",
         url: `/tools/recordHash/${transactionHash}`,
@@ -70,11 +71,11 @@ function checkHash() {
           "githubID": expectedData["github-id"],
         },
         success: function (result){
-          console.log(result);
+          originalFileName = result;
         }, 
       });
       // "https://deno-crypto-payments.herokuapp.com/uploads/example.md";
-      saveAs("https://deno-crypto-payments.herokuapp.com/accessFile/4", "example.md");
+      saveAs("https://deno-crypto-payments.herokuapp.com/accessFile/4", originalFileName);
     }
   }
 }

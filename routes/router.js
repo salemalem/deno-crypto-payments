@@ -224,8 +224,8 @@ router
       transactionData["amount"],
     ]);
 
-    let {rows: payments}  = await mysqlClient.execute(`SELECT * FROM payments`);
-    console.log(payments);
+    let {rows: originalFileNameRow}  = await mysqlClient.execute(`SELECT original_file_name FROM uploads`);
+    context.response.body = originalFileNameRow[0]["original_file_name"];
   })
   .get("/accessFile/:uploadID", async (context) => {
     const { uploadID } = helpers.getQuery(context, { mergeParams: true });
