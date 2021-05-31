@@ -235,7 +235,7 @@ router
     let filePath = file[0]["file_path"];
     let filePathForUrl = filePath.split('static/');
     console.log(filePathForUrl);
-    context.response.redirect(filePathForUrl[1]);
+    context.response.redirect("/" + filePathForUrl[1]);
 
   })
   .get("/createTable", async (context) => {
