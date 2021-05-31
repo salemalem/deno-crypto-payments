@@ -60,11 +60,9 @@ function checkHash() {
       type: "POST",
       url: `/tools/recordHash/${transactionHash}`,
       headers: {
-        "transactionData": {
-          "owner_address": userTronAddress,
-          "to_address": expectedData["seller-tron-address"],
-          "amount": convertedFlatAmount,
-        },
+        "owner_address": userTronAddress,
+        "to_address": expectedData["seller-tron-address"],
+        "amount": convertedFlatAmount,
       },
       success: function (result){
         console.log(result);
