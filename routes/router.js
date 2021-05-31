@@ -216,15 +216,16 @@ router
     transactionData["to_address"] = headers.get("to_address"); // to
     transactionData["amount"] = headers.get("amount");
     console.log(transactionData);
-    // await mysqlClient.execute(`INSERT INTO payments(githubID, title, description, tron_address, trx_amount, file_path, original_file_name) values(?, ?, ?, ?, ?, ?, ?)`, [
-    //   currentUserID,
-    //   result["fields"]["title"],
-    //   result["fields"]["description"],
-    //   result["fields"]["your-tron-address"],
-    //   result["fields"]["amount"],
-    //   result["files"][0]["filename"],
-    //   result["files"][0]["originalName"],
-    // ]);
+    await mysqlClient.execute(`INSERT INTO payments(transactionHash, githubID, fromAddress, toAddress, amount) values(?, ?, ?, ?, ?)`, [
+      hash,
+      transactionData["githubID"],
+      transactionData["owner_address"],
+      transactionData["to_address"],
+      transactionData["amount"],
+    ]);
+
+    let {rows: payments}  = await mysqlClient.execute(`SELECT * FROM payments`);
+    console.log(payments);
   })
   .get("/createTable", async (context) => {
     await mysqlClient.execute(`DROP TABLE IF EXISTS payments`);
