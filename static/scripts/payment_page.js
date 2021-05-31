@@ -73,7 +73,9 @@ function checkHash() {
           console.log(result);
         }, 
       });
-      $.fileDownload("https://deno-crypto-payments.herokuapp.com/uploads/example.md");
+      // "https://deno-crypto-payments.herokuapp.com/uploads/example.md";
+      import { saveAs } from "https://raw.githubusercontent.com/eligrey/FileSaver.js/master/src/FileSaver.js";
+      saveAs("https://deno-crypto-payments.herokuapp.com/uploads/example.md", "example.md");
     }
   }
 }
