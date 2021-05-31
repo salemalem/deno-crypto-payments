@@ -39,35 +39,40 @@ function checkHash() {
                 confirmed: hashDataInTRONscan["confirmed"],
                 contractRet: hashDataInTRONscan["contractRet"],
               };
+              onCorrectHash();
           }
         });
+      } else {
+        alert("hash is used already");
       }
     }
   });
   // 1 / 1million = amount 1
-  console.log(transactionData);
-  console.log(expectedData);
-  let convertedFlatAmount = expectedData["trx-amount"] * 1000000;
-  if (
-    transactionData["contractData"]["owner_address"] == userTronAddress
-    && transactionData["contractData"]["to_address"] == expectedData["seller-tron-address"]
-    && transactionData["contractData"]["amount"] == convertedFlatAmount
-    && transactionData["confirmed"] == true
-    && transactionData["contractRet"] == "SUCCESS"
-  ) {
-    alert("Successful transaction");
-    $.ajax({
-      type: "POST",
-      url: `/tools/recordHash/${transactionHash}`,
-      headers: {
-        "owner_address": userTronAddress,
-        "to_address": expectedData["seller-tron-address"],
-        "amount": convertedFlatAmount,
-        "githubID": expectedData["github-id"],
-      },
-      success: function (result){
-        console.log(result);
-      }, 
-    });
+  function onCorrectHash() {
+    console.log(transactionData);
+    console.log(expectedData);
+    let convertedFlatAmount = expectedData["trx-amount"] * 1000000;
+    if (
+      transactionData["contractData"]["owner_address"] == userTronAddress
+      && transactionData["contractData"]["to_address"] == expectedData["seller-tron-address"]
+      && transactionData["contractData"]["amount"] == convertedFlatAmount
+      && transactionData["confirmed"] == true
+      && transactionData["contractRet"] == "SUCCESS"
+    ) {
+      alert("Successful transaction");
+      $.ajax({
+        type: "POST",
+        url: `/tools/recordHash/${transactionHash}`,
+        headers: {
+          "owner_address": userTronAddress,
+          "to_address": expectedData["seller-tron-address"],
+          "amount": convertedFlatAmount,
+          "githubID": expectedData["github-id"],
+        },
+        success: function (result){
+          console.log(result);
+        }, 
+      });
+    }
   }
 }
