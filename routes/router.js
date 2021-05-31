@@ -211,6 +211,7 @@ router
     const { hash } = helpers.getQuery(context, { mergeParams: true });
     let headers = context.request.headers;
     let transactionData = {};
+    transactionData["githubID"] = headers.get("githubID");
     transactionData["owner_address"] = headers.get("owner_address"); // from 
     transactionData["to_address"] = headers.get("to_address"); // to
     transactionData["amount"] = headers.get("amount");
