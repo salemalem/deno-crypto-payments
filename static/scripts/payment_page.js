@@ -1,5 +1,3 @@
-import { saveAs } from "https://raw.githubusercontent.com/eligrey/FileSaver.js/master/src/FileSaver.js";
-
 let userTronAddress;
 let transactionHash;
 let transactionData;
