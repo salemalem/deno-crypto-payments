@@ -229,6 +229,8 @@ router
   })
   .get("/accessFile/:uploadID", async (context) => {
     const { uploadID } = helpers.getQuery(context, { mergeParams: true });
+    let {rows} = await mysqlClient.execute(`SELECT file_path, original_file_name FROM uploads`);
+    console.log(rows);
     let {rows: file} = await mysqlClient.execute(`SELECT file_path, original_file_name FROM uploads WHERE upload_key=${uploadID}`);
     console.log(file);
     context.response.body = file;
