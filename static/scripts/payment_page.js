@@ -1,3 +1,5 @@
+import { saveAs } from "https://raw.githubusercontent.com/eligrey/FileSaver.js/master/src/FileSaver.js";
+
 let userTronAddress;
 let transactionHash;
 let transactionData;
@@ -74,7 +76,6 @@ function checkHash() {
         }, 
       });
       // "https://deno-crypto-payments.herokuapp.com/uploads/example.md";
-      import { saveAs } from "https://raw.githubusercontent.com/eligrey/FileSaver.js/master/src/FileSaver.js";
       saveAs("https://deno-crypto-payments.herokuapp.com/uploads/example.md", "example.md");
     }
   }
