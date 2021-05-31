@@ -63,6 +63,7 @@ function checkHash() {
         "owner_address": userTronAddress,
         "to_address": expectedData["seller-tron-address"],
         "amount": convertedFlatAmount,
+        "githubID": expectedData["github-id"],
       },
       success: function (result){
         console.log(result);

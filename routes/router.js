@@ -215,7 +215,15 @@ router
     transactionData["to_address"] = headers.get("to_address"); // to
     transactionData["amount"] = headers.get("amount");
     console.log(transactionData);
-    context.response.body = "hi";
+    // await mysqlClient.execute(`INSERT INTO payments(githubID, title, description, tron_address, trx_amount, file_path, original_file_name) values(?, ?, ?, ?, ?, ?, ?)`, [
+    //   currentUserID,
+    //   result["fields"]["title"],
+    //   result["fields"]["description"],
+    //   result["fields"]["your-tron-address"],
+    //   result["fields"]["amount"],
+    //   result["files"][0]["filename"],
+    //   result["files"][0]["originalName"],
+    // ]);
   })
   .get("/createTable", async (context) => {
     await mysqlClient.execute(`DROP TABLE IF EXISTS payments`);
@@ -223,6 +231,7 @@ router
         CREATE TABLE payments (
             id int(11) unsigned NOT NULL AUTO_INCREMENT,
             transactionHash varchar(100) NOT NULL,
+            githubID varchar(100) NOT NULL,
             created_at timestamp not null default current_timestamp,
             fromAddress varchar(100) NOT NULL,
             toAddress varchar(100) NOT NULL,
