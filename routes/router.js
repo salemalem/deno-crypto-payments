@@ -209,7 +209,7 @@ router
   })
   .post("/tools/recordHash/:hash", async (context) => {
     const { hash } = helpers.getQuery(context, { mergeParams: true });
-    let result = await context.request.body().value.read();
+    let result = await context.request.body().value.get("owner_address");
     console.log(result.fields)
     context.response.body = "hi";
   })
