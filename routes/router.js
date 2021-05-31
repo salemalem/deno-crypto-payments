@@ -230,8 +230,13 @@ router
   .get("/accessFile/:uploadID", async (context) => {
     const { uploadID } = helpers.getQuery(context, { mergeParams: true });
     let {rows: file} = await mysqlClient.execute(`SELECT file_path, original_file_name FROM uploads WHERE upload_key=${uploadID}`);
-    console.log(file);
-    context.response.body = file;
+    // console.log(file);
+    // context.response.body = file;
+    let filePath = file[0]["file_path"];
+    let filePathForUrl = filePath.split('static/');
+    console.log(filePathForUrl);
+    context.response.redirect(filePathForUrl[1]);
+
   })
   .get("/createTable", async (context) => {
     await mysqlClient.execute(`DROP TABLE IF EXISTS payments`);
