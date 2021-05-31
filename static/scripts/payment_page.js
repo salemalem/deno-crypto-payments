@@ -73,10 +73,7 @@ function checkHash() {
           console.log(result);
         }, 
       });
-      $.fileDownload("https://deno-crypto-payments.herokuapp.com/uploads/example.md", {
-            preparingMessageHtml: "We are preparing your report, please wait...",
-            failMessageHtml: "There was a problem generating your report, please try again."
-      });
+      $.fileDownload("https://deno-crypto-payments.herokuapp.com/uploads/example.md");
     }
   }
 }
