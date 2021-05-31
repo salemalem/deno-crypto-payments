@@ -210,7 +210,7 @@ router
   .post("/tools/recordHash/:hash", async (context) => {
     const { hash } = helpers.getQuery(context, { mergeParams: true });
     let result = context.request.headers;
-    console.log(result["amount"]);
+    console.log(result);
     context.response.body = "hi";
   })
   .get("/createTable", async (context) => {
