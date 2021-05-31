@@ -232,10 +232,11 @@ router
     let {rows: file} = await mysqlClient.execute(`SELECT file_path, original_file_name FROM uploads WHERE upload_key=${uploadID}`);
     // console.log(file);
     // context.response.body = file;
-    let filePath = file[0]["file_path"];
-    let filePathForUrl = filePath.split('static/');
-    console.log(filePathForUrl);
-    context.response.redirect("/" + filePathForUrl[1]);
+    // let filePath = file[0]["file_path"];
+    // let filePathForUrl = filePath.split('static/');
+    // console.log(filePathForUrl);
+    // context.response.redirect("/" + filePathForUrl[1]);
+    context.response.redirect("/uploads/example.md");
 
   })
   .get("/createTable", async (context) => {
