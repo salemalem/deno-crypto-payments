@@ -28,7 +28,7 @@ function checkHash() {
     url: `/tools/checkhash/${transactionHash}`,
     type: "GET",
     success: function (hashDataInRecords) {
-      if (hashDataInRecords == 0) {
+      if (hashDataInRecords != 0) {
         $.ajax({
           url: `https://apilist.tronscan.org/api/transaction-info?hash=${transactionHash}`,
           type: "GET",
