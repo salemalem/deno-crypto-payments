@@ -59,7 +59,7 @@ function checkHash() {
     $.ajax({
       type: "POST",
       url: `/tools/recordHash/${transactionHash}`,
-      data: {
+      headers: {
         owner_address: userTronAddress,
         to_address: expectedData["seller-tron-address"],
         amount: convertedFlatAmount
