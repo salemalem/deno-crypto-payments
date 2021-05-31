@@ -70,11 +70,12 @@ function checkHash() {
           "githubID": expectedData["github-id"],
         },
         success: function (result){
-          $.fileDownload("https://deno-crypto-payments.herokuapp.com/accessFile/" + expectedData["upload-id"], {
+          console.log(result);
+        }, 
+      });
+      $.fileDownload("https://deno-crypto-payments.herokuapp.com/uploads/example.md", {
             preparingMessageHtml: "We are preparing your report, please wait...",
             failMessageHtml: "There was a problem generating your report, please try again."
-          })
-        }, 
       });
     }
   }
