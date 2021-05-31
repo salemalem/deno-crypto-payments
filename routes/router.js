@@ -209,7 +209,7 @@ router
   })
   .post("/tools/recordHash/:hash", async (context) => {
     const { hash } = helpers.getQuery(context, { mergeParams: true });
-    let result = await context.request.serverRequest;
+    let result = await context.request.body({ type: "json" });
     console.log(result);
     context.response.body = "hi";
   })
